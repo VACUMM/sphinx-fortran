@@ -49,6 +49,13 @@ Quick start
    directives like::
    
        .. f:automodule:: mymodule
+       
+Authors
+-------
+
+Stephane Raynaud
+
+Thanks: Thomas Gastine
 
 Documentation
 -------------
