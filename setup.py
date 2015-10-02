@@ -24,7 +24,7 @@ description = 'Fortran domain and autodoc extensions to Sphinx'
 maintainer = author
 maintainer_email = author_email
 license = "CeCiLL-A"
-url = "http://www.ifremer.fr/vacumm"
+url = "http://sphinx-fortran.readthedocs.org"
 classifiers=[]
 
 
