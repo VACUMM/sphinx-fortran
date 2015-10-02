@@ -2,6 +2,7 @@
 # Inits
 from setuptools import setup, find_packages
 import sys
+import os
 
 # Version, etc
 sys.path.insert(0, 'sphinxfortran')
@@ -10,10 +11,11 @@ from  sphinxfortran import ( __version__ as version, __author__ as author,
 del sys.path[0]
 
 # From files
-with open('README.rst') as f:
+base = os.path.dirname(__file__)
+with open(os.path.join(base, 'README.rst')) as f:
     long_description = f.read()
 # From files
-with open('requires.txt') as f:
+with open(os.path.join(base, 'requires.txt')) as f:
     requires = filter(None, f.read().split('\n'))
 
 
