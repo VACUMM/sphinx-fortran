@@ -1,6 +1,3 @@
-SphinxFortran extension's documentation
-=======================================
-
 .. include:: ../../README.rst
 
 Contents:

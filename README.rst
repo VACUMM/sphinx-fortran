@@ -1,3 +1,10 @@
+Sphinx-Fortran extensions
+=========================
+
+|build-status| |docs|
+
+
+
 Purpose
 -------
 
@@ -44,5 +51,5 @@ Quick start
 Documentation
 -------------
 
-Website:
+Website: http://sphinx-fortran.readthedocs.org 
 
