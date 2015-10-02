@@ -31,10 +31,12 @@ Installation
 
 Using ``pip``::
 
-    pip install sphinxfortran
+    pip install sphinx-fortran
 
 From sources::
 
+    git clone https://github.com/VACUMM/sphinx-fortran.git
+    cd sphinx-fortran
     python setup.py install
 
 Quick start
