@@ -1,6 +1,11 @@
 Sphinx-Fortran extensions
 =========================
 
+.. image:: https://travis-ci.org/VACUMM/sphinx-fortran.svg?branch=master
+    :target: https://travis-ci.org/VACUMM/sphinx-fortran
+
+.. image:: https://readthedocs.org/projects/sphinx-fortran/badge/?version=latest
+    :target: http://sphinx-fortran.readthedocs.org/en/latest/?badge=latest
 
 
 Purpose
