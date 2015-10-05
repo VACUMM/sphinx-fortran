@@ -15,7 +15,7 @@ base = os.path.dirname(__file__)
 with open(os.path.join(base, 'README.rst')) as f:
     long_description = f.read()
 # From files
-with open(os.path.join(base, 'requires.txt')) as f:
+with open(os.path.join(base, 'requirements.txt')) as f:
     requires = filter(None, f.read().split('\n'))
 
 
