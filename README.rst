@@ -11,24 +11,27 @@ Sphinx-Fortran extensions
 Purpose
 -------
 
-This package provides two Sphinx (http://www.http://sphinx.pocoo.org/) extensions
+This package provides two Sphinx (http://sphinx.pocoo.org/) extensions
 to the Fortran (90) language:
 
 - ``sphinxfortran.fortran_domain``: Sphinx domain for fortran.
 - ``sphinxfortran.fortran_autodoc``: Auto-documenting fortran code.
 
+
 License
 -------
 
 This package has the same license as VACUMM (http://www.ifremer.fr/vacumm)
-from which it originates: CeciLL-A (
-http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html),
+from which it originates: CeciLL-A
+(http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html),
 which is compatible with the GPL.
+
 
 Prerequisites
 -------------
 
 The ``sphinx`` and ``numpy`` packages.
+
 
 Installation
 ------------
@@ -43,8 +46,9 @@ From sources::
     cd sphinx-fortran
     python setup.py install
 
-You can get sources also from the forge at IFREMER:
+You can download sources also from the forge at IFREMER:
 https://forge.ifremer.fr/frs/?group_id=93
+
 
 Quick start
 -----------
@@ -57,12 +61,21 @@ Quick start
 
        .. f:automodule:: mymodule
 
+
+Bugs and requests
+-----------------
+
+Please go to this GitHub page:
+https://github.com/VACUMM/sphinx-fortran/issues
+
+
 Authors
 -------
 
-Stephane Raynaud
+Stephane Raynaud (stephane.raynaud(at)gmail.com)
 
 Thanks: Thomas Gastine
+
 
 Documentation
 -------------
