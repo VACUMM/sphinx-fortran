@@ -1,6 +1,9 @@
 Sphinx-Fortran extensions
 =========================
 
+.. image:: https://badge.fury.io/py/sphinx-fortran.svg
+    :target: https://badge.fury.io/py/sphinx-fortran
+
 .. image:: https://travis-ci.org/VACUMM/sphinx-fortran.svg?branch=master
     :target: https://travis-ci.org/VACUMM/sphinx-fortran
 
@@ -53,7 +56,7 @@ https://forge.ifremer.fr/frs/?group_id=93
 Quick start
 -----------
 
-1. Add this extension to you sphinx ``conf.py``.
+1. Add this extension to your sphinx ``conf.py``.
 2. List you fortran source files in the variable
    ``fortran_src`` of your ``conf.py``.
 3. Generate their documentation in rst files using
