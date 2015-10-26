@@ -8,8 +8,8 @@ and can therefore document FORTRAN codes.
 
 .. highlight:: rst
 
-Configurer Sphinx
------------------
+Configure Sphinx
+----------------
 
 Just add :mod:`sphinxfortran.fortran_domain`
 to the list defined by the :attr:`extension` variable in the file
