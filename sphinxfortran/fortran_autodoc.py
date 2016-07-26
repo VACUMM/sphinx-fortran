@@ -510,8 +510,8 @@ class F90toRst(object):
             - OR ``scomment,ilast``: if ``getilast is True``
         """
         scomment = []
-        in_a_breaked_line = False
-        if src is not None:
+        if src:
+            in_a_breaked_line = src[0].strip().endswith('&')
             for iline in xrange(iline, len(src)):
                 line = src[iline].strip()
 
