@@ -93,7 +93,7 @@ def add_shape(node, shape, modname=None, nodefmt=nodes.Text):
 
 re_name_shape = re.compile('(\w+)(\(.+\))?')
 
-re_fieldname_match = re.compile(r'(?P<type>\b\w+\b)?\s*(?P<name>\b\w+\b)\s*(?P<shape>\(.*\))?\s*(?P<sattrs>\[.+\])?').match
+re_fieldname_match = re.compile(r'(?P<type>\b\w+\b(?P<kind>\s*\(.*\))?)?\s*(?P<name>\b\w+\b)\s*(?P<shape>\(.*\))?\s*(?P<sattrs>\[.+\])?').match
 
 class FortranField(Field):
     def make_xref(self, rolename, domain, target, innernode=nodes.emphasis,
@@ -259,7 +259,7 @@ class FortranDocFieldTransformer(DocFieldTransformer):
         m = re_fieldname_match(fieldname.strip())
         if not m:
             raise ValueError('Wrong field (%s). It must have at least one parameter name and one argument'%fieldname)
-        ftype, name, shape, attrs = m.groups()
+        ftype, kind, name, shape, attrs = m.groups()
         attrs = attrs and attrs[1:-1]
         #if attrs:
             #attrs = [a.strip() for a in attrs[1:-1].split(',')]
