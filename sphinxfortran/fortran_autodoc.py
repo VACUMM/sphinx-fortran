@@ -230,7 +230,9 @@ class F90toRst(object):
 #        for block in self.types.values()+self.modules.values():
         for block in self.types.values()+self.modules.values()+self.routines.values():
             #sreg = r'\b(?P<varname>%s)\b[\W\d]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
-            sreg = r'[\W\(\),\b\*=\-\&]*?:?:[ \t\&]*(?P<varname>%s)\b[\w\s\(\)\*,_=]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
+            #sreg = r'[\W\(\),\b\*=\-\&]*?:?:[ \t\&]*(?P<varname>%s)\b[\w\s\(\)\*,_=]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
+            #sreg = r'.*[\W\(\),\b\*=\-\&]*?:?:[ \t\&]*(?P<varname>%s)\b[\w\s\(\)\*,_=\.]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
+            sreg = r'.*(?P<varname>%s)[^!]*!\s*(?P<vardesc>.*)\s*'%'|'.join(block['sortvars'])
             if block['sortvars']:
                 block['vardescsearch'] = re.compile(sreg, re.I).search
             else:
@@ -854,15 +856,17 @@ class F90toRst(object):
         if 'attrspec' in block and block['attrspec']:
             newattrs = []
             for attr in block['attrspec']:
-                if '=' in block:
-                    if attr=='optional':
-                        continue
-                    elif attr=='parameter':
-                        attr += '='+block['=']
-                        #attr += '='+self.format_arithm(block['='])
-                if attr in []:
-                    attr = attr.upper()
+#                if '=' in block:
+#                    if attr=='optional':
+#                        continue
+#                    elif attr=='parameter':
+#                        attr += '='+block['=']
+#                        #attr += '='+self.format_arithm(block['='])
+#                if attr in []:
+#                    attr = attr.upper()
                 newattrs.append(attr)
+            if '=' in block:
+                newattrs.append('default='+block['='])
             if 'private' in newattrs and 'public' in newattrs:
                 newattrs.remove('private')
             block['attrspec'] = newattrs
