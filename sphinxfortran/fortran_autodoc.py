@@ -371,7 +371,7 @@ class F90toRst(object):
 
 
         # Get description of variables (overwrite for functions and subroutines)
-        if block['block'] in ['function', 'subroutine'] and subsrc is not None:
+        if block['block'] in ['function', 'subroutine', 'type'] and subsrc is not None:
             for line in subsrc:
                 if line.strip().startswith('!'): continue
                 if 'vardescsearch' in block:
