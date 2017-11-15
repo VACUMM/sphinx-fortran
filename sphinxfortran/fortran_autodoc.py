@@ -95,7 +95,7 @@ class F90toRst(object):
             self.src[ff] = []
             for l in f.readlines():
                 try:
-                    self.src[ff].append(l[:-1].decode(encoding) )
+                    self.src[ff].append(l[:-1])
                 except:
                     raise F90toRstException('Encoding error\n  file = %s\n  line = %s'%(ff,l))
             #self.src[ff] = [l.decode(encoding) for l in f.readlines()]
@@ -231,9 +231,9 @@ class F90toRst(object):
         for block in list(self.types.values())+list(self.modules.values())+list(self.routines.values()):
             #sreg = r'\b(?P<varname>%s)\b[\W\d]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
             #sreg = r'[\W\(\),\b\*=\-\&]*?:?:[ \t\&]*(?P<varname>%s)\b[\w\s\(\)\*,_=]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
-            #sreg = r'.*[\W\(\),\b\*=\-\&]*?:?:[ \t\&]*(?P<varname>%s)\b[\w\s\(\)\*,_=\.]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
+            sreg = r'.*[\W\(\),\b\*=\-\&]*?:?:[ \t\&]*(?P<varname>%s)\b[\w\s\(\)\*,_=\.]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
             # reversed+sorted is a hack to avoid conflicts when variables share the same prefix
-            sreg = r'.*(?P<varname>%s)[^!]*!\s*(?P<vardesc>.*)\s*'%'|'.join(reversed(sorted(block['sortvars'])))
+            #sreg = r'.*(?P<varname>%s)[^!]*!\s*(?P<vardesc>.*)\s*'%'|'.join(reversed(sorted(block['sortvars'])))
             if block['sortvars']:
                 block['vardescsearch'] = re.compile(sreg, re.I).search
             else:
@@ -297,7 +297,8 @@ class F90toRst(object):
                 if modsrc:
                     for line in modsrc:
                         if line.strip().startswith('!'): continue
-                        m = block['vardescsearch'](line)
+                        if 'vardescsearch' in block:
+                            m = block['vardescsearch'](line)
                         if m:
                             block['vars'][m.group('varname').lower()]['desc'] = m.group('vardesc')
                 for bvar in list(block['vars'].values()):
