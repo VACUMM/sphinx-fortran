@@ -312,10 +312,8 @@ class FortranDocFieldTransformer(DocFieldTransformer):
             if is_typefield:
                 # filter out only inline nodes; others will result in invalid
                 # markup being written out
-                content = filter(
-                    lambda n: isinstance(n, nodes.Inline) or
-                              isinstance(n, nodes.Text),
-                    content)
+                content = [n for n in content if isinstance(n, nodes.Inline) or
+                              isinstance(n, nodes.Text)]
                 if content:
                     eval(is_typefield).setdefault(typename, {})[fieldarg] = content
                 continue
@@ -750,8 +748,8 @@ class WithFortranDocFieldTransformer:
                 signode.clear()
                 signode += addnodes.desc_name(sig, sig)
                 continue  # we don't want an index entry here
-            if not isinstance(name[0], unicode):
-                name = (unicode(name), name[1])
+            if not isinstance(name[0], str):
+                name = (str(name), name[1])
             if not noindex and name not in self.names:
                 # only add target and index entry if this is the first
                 # description of the object with this name in this desc block
@@ -1009,7 +1007,7 @@ class FortranModuleIndex(Index):
         ignores = self.domain.env.config['modindex_common_prefix']
         ignores = sorted(ignores, key=len, reverse=True)
         # list of all modules, sorted by module name
-        modules = sorted(self.domain.data['modules'].iteritems(),
+        modules = sorted(iter(self.domain.data['modules'].items()),
              key=lambda x: x[0].lower())
         # sort out collapsable modules
         prev_modname = ''
@@ -1061,7 +1059,7 @@ class FortranModuleIndex(Index):
         collapse = len(modules) - num_toplevels < num_toplevels
 
         # sort by first letter
-        content = sorted(content.iteritems())
+        content = sorted(content.items())
 
         return content, collapse
 
@@ -1106,10 +1104,10 @@ class FortranDomain(Domain):
     ]
 
     def clear_doc(self, docname):
-        for fullname, (fn, _) in self.data['objects'].items():
+        for fullname, (fn, _) in list(self.data['objects'].items()):
             if fn == docname:
                 del self.data['objects'][fullname]
-        for modname, (fn, _, _, _) in self.data['modules'].items():
+        for modname, (fn, _, _, _) in list(self.data['modules'].items()):
             if fn == docname:
                 del self.data['modules'][modname]
 
@@ -1216,9 +1214,9 @@ class FortranDomain(Domain):
 
 
     def get_objects(self):
-        for modname, info in self.data['modules'].iteritems():
+        for modname, info in self.data['modules'].items():
             yield (modname, modname, 'module', info[0], 'module-' + modname, 0)
-        for refname, (docname, type) in self.data['objects'].iteritems():
+        for refname, (docname, type) in self.data['objects'].items():
             yield (refname, refname, type, docname, refname, 1)
 
 
