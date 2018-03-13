@@ -47,7 +47,7 @@ from sphinx.locale import l_, _
 from sphinx.domains import Domain, ObjType, Index
 from sphinx.directives import ObjectDescription
 from sphinx.util.nodes import make_refnode
-from sphinx.util.compat import Directive
+# from sphinx.util.compat import Directive
 from sphinx.util.docfields import Field, GroupedField, TypedField, DocFieldTransformer, _is_single_paragraph
 
 # FIXME: surlignage en jaune de la recherche inactive si "/" dans target
