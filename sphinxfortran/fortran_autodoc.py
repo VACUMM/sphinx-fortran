@@ -409,7 +409,7 @@ class F90toRst(object):
         """Join unended lines that does not finish with a comment"""
         for iline, line in enumerate(src):
             m = self._re_unended_match(line)
-            if m:
+            if m and iline<len(src)-1:
                 thisline = m.group(1)
                 m = self._re_unstarted_match(src[iline+1])
                 nextline = m.group(1) if m else src[iline+1]
