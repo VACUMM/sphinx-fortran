@@ -50,6 +50,8 @@ from sphinx.util.nodes import make_refnode
 # from sphinx.util.compat import Directive
 from sphinx.util.docfields import Field, GroupedField, TypedField, DocFieldTransformer, _is_single_paragraph
 
+import six
+
 # FIXME: surlignage en jaune de la recherche inactive si "/" dans target
 
 # Utilities
@@ -1019,7 +1021,7 @@ class FortranModuleIndex(Index):
         ignores = self.domain.env.config['modindex_common_prefix']
         ignores = sorted(ignores, key=len, reverse=True)
         # list of all modules, sorted by module name
-        modules = sorted(self.domain.data['modules'].iteritems(),
+        modules = sorted(six.iteritems(self.domain.data['modules']),
              key=lambda x: x[0].lower())
         # sort out collapsable modules
         prev_modname = ''
@@ -1071,7 +1073,7 @@ class FortranModuleIndex(Index):
         collapse = len(modules) - num_toplevels < num_toplevels
 
         # sort by first letter
-        content = sorted(content.iteritems())
+        content = sorted(six.iteritems(content))
 
         return content, collapse
 
@@ -1226,9 +1228,9 @@ class FortranDomain(Domain):
 
 
     def get_objects(self):
-        for modname, info in self.data['modules'].iteritems():
+        for modname, info in six.iteritems(self.data['modules']):
             yield (modname, modname, 'module', info[0], 'module-' + modname, 0)
-        for refname, (docname, type) in self.data['objects'].iteritems():
+        for refname, (docname, type) in six.iteritems(self.data['objects']):
             yield (refname, refname, type, docname, refname, 1)
 
 
