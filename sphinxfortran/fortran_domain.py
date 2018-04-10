@@ -41,7 +41,7 @@ import re
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 
-from sphinx import addnodes
+from sphinx import addnodes, version_info
 from sphinx.roles import XRefRole
 from sphinx.locale import l_, _
 from sphinx.domains import Domain, ObjType, Index
@@ -670,7 +670,9 @@ class FortranObject(ObjectDescription):
             objects[fullname] = (self.env.docname, self.objtype)
         indextext = self.get_index_text(modname, fullname)
         if indextext:
-            self.indexnode['entries'].append(('single', indextext,
+            #self.indexnode['entries'].append(('single', indextext,
+                                              #fullname, fullname,None))
+            self.indexnode['entries'].append(FortranCreateIndexEntry(indextext,
                                               fullname, fullname))
 
     def before_content(self):
@@ -944,11 +946,19 @@ class FortranModule(Directive):
             indextext = _('%s (module)') % modname
             #inode = addnodes.index(entries=[('single', indextext,
                                              #'module-' + modname, modname)])
-            inode = addnodes.index(entries=[('single', indextext,
-                                             'f' + f_sep + modname, modname)])
+            #inode = addnodes.index(entries=[('single', indextext,
+                                             #'f' + f_sep + modname, modname)])
+            inode = addnodes.index(entries=[FortranCreateIndexEntry('single', indextext,
+                                            'f' + f_sep + modname, modname)])
             ret.append(inode)
         return ret
 
+def FortranCreateIndexEntry(indextext, fullname, modname):
+    # See https://github.com/sphinx-doc/sphinx/issues/2673
+    if version_info < (1, 4):
+        return ('single', indextext, fullname, modname)
+    else:
+        return ('single', indextext, fullname, modname, None)
 
 class FortranCurrentModule(Directive):
     """
