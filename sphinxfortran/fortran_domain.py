@@ -950,7 +950,7 @@ class FortranModule(Directive):
                                              #'module-' + modname, modname)])
             #inode = addnodes.index(entries=[('single', indextext,
                                              #'f' + f_sep + modname, modname)])
-            inode = addnodes.index(entries=[FortranCreateIndexEntry('single', indextext,
+            inode = addnodes.index(entries=[FortranCreateIndexEntry(indextext,
                                             'f' + f_sep + modname, modname)])
             ret.append(inode)
         return ret
