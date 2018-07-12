@@ -52,6 +52,11 @@ from sphinx.util.docfields import Field, GroupedField, TypedField, DocFieldTrans
 
 import six
 
+try:
+    unicode
+except NameError:
+    unicode = str
+
 # FIXME: surlignage en jaune de la recherche inactive si "/" dans target
 
 # Utilities
