@@ -233,8 +233,8 @@ class F90toRst(object):
             #sreg = r'[\W\(\),\b\*=\-\&]*?:?:[ \t\&]*(?P<varname>%s)\b[\w\s\(\)\*,_=]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
             #sreg = r'.*[\W\(\),\b\*=\-\&]*?:?:[ \t\&]*(?P<varname>%s)\b[\w\s\(\)\*,_=\.]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
             # reversed+sorted is a hack to avoid conflicts when variables share the same prefix
-            sreg = r'.*(?P<varname>%s)[^!]*!\s*(?P<vardesc>.*)\s*'%'|'.join(reversed(sorted(block['sortvars'])))
             if block['sortvars']:
+                sreg = r'.*(?P<varname>%s)\s*(?P<dims>\([\*:,\w]+\))?[^!\)]*!\s*(?P<vardesc>.*)\s*'%'|'.join(reversed(sorted(block['sortvars'])))
                 block['vardescsearch'] = re.compile(sreg, re.I).search
             else:
                 block['vardescsearch'] = lambda x: None
@@ -1041,7 +1041,7 @@ class F90toRst(object):
         if blocktype in ['function', 'subroutine']:
             if 'callfrom' in block and block['callfrom']:
                 callfrom = []
-                
+
                 for fromname in block['callfrom']:
                     if fromname in self.routines:
                         cf = self.format_funcref(fromname, module)
@@ -1477,7 +1477,7 @@ def setup(app):
     app.add_config_value('fortran_title_underline', '-', False)
     app.add_config_value('fortran_indent', 4, False)
     app.add_config_value('fortran_subsection_type', 'rubric', False)
-    app.add_config_value('fortran_src', '.', False)
+    app.add_config_value('fortran_src', ['.'], False)
     app.add_config_value('fortran_ext', ['f90', 'f95'], False)
     app.add_config_value('fortran_encoding', 'utf8', False)
 
