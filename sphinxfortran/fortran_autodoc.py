@@ -234,7 +234,7 @@ class F90toRst(object):
             #sreg = r'.*[\W\(\),\b\*=\-\&]*?:?:[ \t\&]*(?P<varname>%s)\b[\w\s\(\)\*,_=\.]*!\s*(?P<vardesc>.*)'%'|'.join(block['sortvars'])
             # reversed+sorted is a hack to avoid conflicts when variables share the same prefix
             if block['sortvars']:
-                sreg = r'.*(?P<varname>%s)\s*(?P<dims>\([\*:,\w]+\))?[^!\)]*!\s*(?P<vardesc>.*)\s*'%'|'.join(reversed(sorted(block['sortvars'])))
+                sreg = r'.*(?P<varname>%s)\b\s*(?P<dims>\([\*:,\w]+\))?[^!\)]*!\s*(?P<vardesc>.*)\s*'%'|'.join(reversed(sorted(block['sortvars'])))
                 block['vardescsearch'] = re.compile(sreg, re.I).search
             else:
                 block['vardescsearch'] = lambda x: None
