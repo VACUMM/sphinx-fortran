@@ -3,7 +3,7 @@
 
 
 """
-# Copyright or © or Copr. Actimar/IFREMER (2010-2015)
+# Copyright or © or Copr. Actimar/IFREMER (2010-2018)
 #
 # This software is a computer program whose purpose is to provide
 # utilities for handling oceanographic and atmospheric data,
@@ -35,25 +35,21 @@
 # The fact that you are presently reading this means that you have had
 # knowledge of the CeCILL license and that you accept its terms.
 #
+from __future__ import print_function
+from builtins import str
+from builtins import range
+from builtins import object
+import six
 from sphinx.directives import Directive
 from docutils.parsers.rst.directives import unchanged
-from docutils import nodes
 from docutils.statemachine import string2lines
 from sphinx.util.console import bold
 from glob import glob
 from numpy.f2py.crackfortran import crackfortran, fortrantypes
-import re, os, sys
+import re, os
 from sphinxfortran.fortran_domain import FortranDomain
 
-try:
-    basestring
-except NameError:
-    basestring = str
 
-try:
-    xrange
-except NameError:
-    xrange = range
 
 # Fortran parser and formatter
 # ----------------------------
@@ -189,22 +185,22 @@ class F90toRst(object):
                         subblock['module'] = module
 
                         # Variables
-                        for varname, bvar in subblock['vars'].items():
+                        for varname, bvar in list(subblock['vars'].items()):
                             bvar['name'] = varname
 
                 # Function aliases from "use only" (rescan)
-                for bfunc in self.routines.values(): bfunc['aliases'] = []
+                for bfunc in list(self.routines.values()): bfunc['aliases'] = []
                 for subblock in block['body']:
                     if not subblock['block'] == 'use': continue
-                    for monly in block['use'].values():
+                    for monly in list(block['use'].values()):
                         if not monly: continue
-                        for fname, falias in monly['map'].items():
+                        for fname, falias in list(monly['map'].items()):
                             self.routines[falias] = self.routines[fname]
                             if falias not in self.routines[fname]['aliases']:
                                 self.routines[fname]['aliases'].append(falias)
 
                 # Module variables
-                for varname, bvar in block['vars'].items():
+                for varname, bvar in list(block['vars'].items()):
                     if not varname in self.routines:
                         self.variables[varname] = bvar
                         #self.variables.pop(varname)
@@ -220,20 +216,20 @@ class F90toRst(object):
                 container[block['name']] = block
 
                 # Variables
-                for varname, bvar in block['vars'].items():
+                for varname, bvar in list(block['vars'].items()):
                     bvar['name'] = varname
 
 
         # Regular expression for fast search
         # - function calls
-        subs = [block['name'].lower() for block in self.routines.values() if block['block']=='subroutine']
+        subs = [block['name'].lower() for block in list(self.routines.values()) if block['block']=='subroutine']
         self._re_callsub_findall = subs and \
             re.compile(r'call\s+(%s)\b'%('|'.join(subs)), re.I).findall or (lambda line: [])
-        funcs = [block['name'].lower() for block in self.routines.values() if block['block']=='function']
+        funcs = [block['name'].lower() for block in list(self.routines.values()) if block['block']=='function']
         self._re_callfunc_findall = funcs and \
             re.compile(r'\b(%s)\s*\('%('|'.join(funcs)), re.I).findall or (lambda line: [])
         # - function variables
-        for block in self.routines.values():
+        for block in list(self.routines.values()):
             vars = (r'|\b').join(block['sortvars']) + r'|\$(?P<varnum>\d+)'
             sreg = r'[\w\*\-:]*(?:@param\w*)?(?P<varname>\b%s\b)\W+(?P<vardesc>.*)'%vars
             block['vardescmatch'] = re.compile(sreg).match
@@ -253,7 +249,7 @@ class F90toRst(object):
 
     def build_callfrom_index(self):
         """For each function, index which function call it"""
-        for bfunc in self.routines.values():
+        for bfunc in list(self.routines.values()):
             bfunc['callfrom'] = []
             for bfuncall in list(self.routines.values()) + list(self.programs.values()):
                 if bfunc['name'] in bfuncall['callto']:
@@ -311,7 +307,7 @@ class F90toRst(object):
                         m = block['vardescsearch'](line)
                         if m:
                             block['vars'][m.group('varname').lower()]['desc'] = m.group('vardesc')
-                for bvar in block['vars'].values():
+                for bvar in list(block['vars'].values()):
                     bvar.setdefault('desc', '')
 
             # Routines
@@ -392,7 +388,7 @@ class F90toRst(object):
                         block['vars'][m.group('varname').lower()]['desc'] = m.group('vardesc')
 
         # Fill empty descriptions
-        for bvar in block['vars'].values():
+        for bvar in list(block['vars'].values()):
             bvar.setdefault('desc', '')
 
         del subsrc
@@ -454,7 +450,7 @@ class F90toRst(object):
             stopmatch = re.compile(stopmatch).match
 
         # Beginning
-        for ifirst in xrange(istart, len(src)):
+        for ifirst in range(istart, len(src)):
             # Simple stop on match
             if stopmatch and stopmatch(src[ifirst]): return
             # Ok, now check
@@ -463,7 +459,7 @@ class F90toRst(object):
             return
 
         # End
-        for ilast in xrange(ifirst, len(src)):
+        for ilast in range(ifirst, len(src)):
             if stopmatch and stopmatch(src[ilast]): break
             if rend(src[ilast].lower()): break
 
@@ -526,7 +522,7 @@ class F90toRst(object):
         scomment = []
         if src:
             in_a_breaked_line = src[0].strip().endswith('&')
-            for iline in xrange(iline, len(src)):
+            for iline in range(iline, len(src)):
                 line = src[iline].strip()
 
                 # Breaked line
@@ -599,8 +595,8 @@ class F90toRst(object):
         if not choice.endswith('s'): choice += 's'
         assert choice in ['types', 'variables', 'functions', 'subroutines'], "Wrong type of declaration"
         module = module.lower()
-        assert module in self.modules.keys(), "Wrong module name"
-        baselist = getattr(self, choice).values()
+        assert module in list(self.modules.keys()), "Wrong module name"
+        baselist = list(getattr(self, choice).values())
         # print(choice)
         # print(baselist)
         # print(module)
@@ -645,7 +641,7 @@ class F90toRst(object):
         bullet = (str(bullet)+' ') if bullet else ''
 
         # Get current indentation for reduction
-        if isinstance(lines, basestring): lines = [lines]
+        if isinstance(lines, six.string_types): lines = [lines]
 
         # Split lines
         tmp = []
@@ -742,7 +738,7 @@ class F90toRst(object):
 
     def format_options(self, options, indent=0):
         """Format directive options"""
-        options = [':%s: %s'%option for option in options.items() if option[1] is not None]
+        options = [':%s: %s'%option for option in list(options.items()) if option[1] is not None]
         return self.format_lines(options, indent=indent)
 
     def format_funcref(self, fname, current_module=None, aliasof=None, module=None):
@@ -798,7 +794,7 @@ class F90toRst(object):
             else:
                 use = self.format_subsection('Needed modules', indent=indent)
             lines = []
-            for mname, monly in block['use'].items():
+            for mname, monly in list(block['use'].items()):
 
                 # Reference to the module
                 line = (self.indent(indent) if not short else '')+':f:mod:`%s`'%mname
@@ -806,7 +802,7 @@ class F90toRst(object):
                 # Reference to the routines
                 if monly:
                     funcs = []
-                    for fname, falias in monly['map'].items():
+                    for fname, falias in list(monly['map'].items()):
                         func = self.format_funcref(fname, module=mname)
                         if fname!=falias:
                             falias = self.format_funcref(falias, module=mname, aliasof=fname)
@@ -932,7 +928,7 @@ class F90toRst(object):
 
         # Variables
         vlines = []
-        for bvar in block['vars'].values():
+        for bvar in list(block['vars'].values()):
             vlines.append(self.format_argfield(bvar, role='f'))
         variables = self.format_lines(vlines, indent=indent+1)+'\n'
         del vlines
@@ -1008,7 +1004,7 @@ class F90toRst(object):
     def format_routine(self, block, indent=0):
         """Format the description of a function, a subroutine or a program"""
         # Declaration of a subroutine or function
-        if isinstance(block, basestring):
+        if isinstance(block, six.string_types):
             if block not in list(self.programs.keys()) + list(self.routines.keys()):
                 raise F90toRstException('Unknown function, subroutine or program: %s'%block)
             if block in self.programs:
@@ -1029,7 +1025,7 @@ class F90toRst(object):
         comments = list(block['desc'])+['']
         if blocktype!='program' :
             found = []
-            for iline in xrange(len(comments)):
+            for iline in range(len(comments)):
                 if 'vardescmatch' in block:
                     m = block['vardescmatch'](comments[iline])
                     if m:
@@ -1083,7 +1079,7 @@ class F90toRst(object):
 
     def format_quickaccess(self, module, indent=indent):
         """Format an abstract of all types, variables and routines of a module"""
-        if not isinstance(module, basestring): module = module['name']
+        if not isinstance(module, six.string_types): module = module['name']
 
         # Title
         title = self.format_subsection('Quick access', indent=indent)+'\n'
@@ -1126,7 +1122,7 @@ class F90toRst(object):
         """Format the description of all variables (global or module)"""
         variables = ''
         if block['vars']:
-            for bvar in block['vars'].values():
+            for bvar in list(block['vars'].values()):
                 variables += self.format_var(bvar, indent=indent)
             variables = self.format_subsection('Variables', indent=indent)+variables+'\n\n'
         return variables
@@ -1156,7 +1152,7 @@ class F90toRst(object):
         """Recursively format a module and its declarations"""
 
         # Declaration of the module
-        if isinstance(block, basestring):
+        if isinstance(block, six.string_types):
             if block not in self.modules:
                 raise F90toRstException('Unknown module: %s'%block)
             block = self.modules[block]
@@ -1236,7 +1232,7 @@ def list_files(fortran_src, exts=['f', 'f90', 'f95'], absolute=True):
     # List the files using globs
     ffiles = []
     for fg in fortran_src:
-        if not isinstance(fg, basestring): continue
+        if not isinstance(fg, six.string_types): continue
         if os.path.isdir(fg):
             for ext in exts:
                 ffiles.extend(glob(os.path.join(fg,'*.'+ext)))
