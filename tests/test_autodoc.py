@@ -31,3 +31,12 @@ def test_autodoc_module_assim(app, status, warning):
     assert utl_matsqrt_desc_header.astext().strip() == 'Calculate square root of an error covariance matrix'
     assert utl_matsqrt_desc_params[0].astext() == 'Parameters\n\npa (kn,kn) [real,inout] :: on entry, the original matrix; on exit, the sqrt matrix\n\nzsign [real,in] :: sign of the exponent'
     assert utl_matsqrt_desc_params[1].astext() == 'Options\n\nkn [integer,in,optional/default=shape(pa,0)] :: order of the matrix\n\nprintinformation_opt [logical,in,optional] :: request more verbose output'
+
+
+@pytest.mark.sphinx('dummy', testroot='fortran-autodoc')
+def test_autodoc_module_misc(app, status, warning):
+    app.builder.build_all()
+
+    module_assim = pickle.loads((app.doctreedir / 'module_misc.doctree').bytes())
+    from pprint import pprint
+    print(module_assim[0][1])
