@@ -40,13 +40,16 @@ from builtins import str
 from builtins import range
 from builtins import object
 import six
-from sphinx.directives import Directive
+import re
+import os
+
+
+from docutils.parsers.rst import Directive
 from docutils.parsers.rst.directives import unchanged
 from docutils.statemachine import string2lines
 from sphinx.util.console import bold
 from glob import glob
 from numpy.f2py.crackfortran import crackfortran, fortrantypes
-import re, os
 from sphinxfortran.fortran_domain import FortranDomain
 
 
