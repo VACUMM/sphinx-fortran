@@ -3,7 +3,7 @@
 
 
 """
-# Copyright or © or Copr. Actimar/IFREMER (2010-2018)
+# Copyright or © or Copr. Actimar/IFREMER (2010-2019)
 #
 # This software is a computer program whose purpose is to provide
 # utilities for handling oceanographic and atmospheric data,
@@ -50,8 +50,12 @@ from docutils.statemachine import string2lines
 from sphinx.util.console import bold
 from glob import glob
 from numpy.f2py.crackfortran import crackfortran, fortrantypes
+from sphinx.util import logging
+
 from sphinxfortran.fortran_domain import FortranDomain
 
+
+logger = logging.getLogger(__name__)
 
 
 # Fortran parser and formatter
@@ -1249,7 +1253,7 @@ def list_files(fortran_src, exts=['f', 'f90', 'f95'], absolute=True):
 def fortran_parse(app):
     env = app.builder.env
     if isinstance(app.config.fortran_src, (str, list)):
-        app.info(bold('parsing fortran sources...'), nonl=True)
+        logger.info(bold('parsing fortran sources...'), nonl=True)
 
         # Sources a list
         if not isinstance(app.config.fortran_src, list):
@@ -1260,17 +1264,17 @@ def fortran_parse(app):
 
         # Parse files
         if not ffiles:
-            app.info(" no fortran files found")
+            logger.info(" no fortran files found")
             app.config._f90torst = None
         else:
             app.config.fortran_indent = fmt_indent(app.config.fortran_indent)
             app.config._f90torst = F90toRst(ffiles, ic=app.config.fortran_indent,
                 ulc=app.config.fortran_title_underline, encoding=app.config.fortran_encoding)
-            app.info(' done')
+            logger.info(' done')
         app._status.flush()
 
     else:
-        app.warn("wrong list of fortran 90 source specifications: "+str(app.config.fortran_src))
+        logger.warning("wrong list of fortran 90 source specifications: "+str(app.config.fortran_src))
         app.config._f90torst = None
 #    app.config._f90files = []
 
@@ -1484,8 +1488,8 @@ class FortranAutoSrcfileDirective(Directive):
 
 def setup(app):
 
-    app.add_description_unit('ftype', 'ftype', indextemplate='pair: %s; Fortran type', )
-    app.add_description_unit('fvar', 'fvar', indextemplate='pair: %s; Fortran variable', )
+    app.add_object_type('ftype', 'ftype', indextemplate='pair: %s; Fortran type', )
+    app.add_object_type('fvar', 'fvar', indextemplate='pair: %s; Fortran variable', )
 
     app.add_config_value('fortran_title_underline', '-', False)
     app.add_config_value('fortran_indent', 4, False)
