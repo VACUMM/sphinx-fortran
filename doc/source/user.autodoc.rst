@@ -126,7 +126,7 @@ The insertion of an auto-documentation can be chosen with the following diective
 
     Document a module variable.
 
-.. rst:directive:: .. f:autovariable::  modname
+.. rst:directive:: .. f:automodule::  modname
 
     Document a module.
     This directive accepts options ``:subsection_type:`` and
