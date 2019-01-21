@@ -450,7 +450,7 @@ class F90toRst(object):
         if src is None: src = self.get_src(block)
         blocktype = block['block'].lower()
         blockname = block['name'].lower()
-        ftypes = '(?:(?:%s).*\s+)?'%fortrantypes if blocktype=='function' else ''
+        ftypes = r'(?:(?:%s).*\s+)?'%fortrantypes if blocktype=='function' else ''
         rstart = re.compile(r"^\s*%s%s\s+%s\b.*$"%(ftypes, blocktype, blockname), re.I).match
         rend   = re.compile(r"^\s*end\s+%s\b.*$"%blocktype, re.I).match
         if isinstance(stopmatch, str):

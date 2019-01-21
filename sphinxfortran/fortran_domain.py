@@ -87,7 +87,7 @@ def parse_shape(shape):
 
 def add_shape(node, shape, modname=None, nodefmt=nodes.Text):
     """Format a shape expression for a node"""
-    dims = re.split('\s*,\s*', shape.strip('( )'))
+    dims = re.split(r'\s*,\s*', shape.strip('( )'))
     node += nodefmt(' (',' (')
     convert_arithm(node, shape.strip('( )'), modname=modname, nodefmt=nodefmt)
     node += nodefmt(')',')')
@@ -97,7 +97,7 @@ def add_shape(node, shape, modname=None, nodefmt=nodes.Text):
 # Doc fields
 
 
-re_name_shape = re.compile('(\w+)(\(.+\))?')
+re_name_shape = re.compile(r'(\w+)(\(.+\))?')
 
 re_fieldname_match = re.compile(r'(?P<type>\b\w+\b(?P<kind>\s*\(.*\))?)?\s*(?P<name>\b\w+\b)\s*(?P<shape>\(.*\))?\s*(?P<sattrs>\[.+\])?').match
 
@@ -400,7 +400,7 @@ f_sig_re = re.compile(
 
 # RE to split at word boundaries
 wsplit_re = re.compile(r'(\W+)')
-f_type_re = re.compile('^([\w]+).*$')
+f_type_re = re.compile(r'^([\w]+).*$')
 
 f_paramlist_re = re.compile(r'([\[\],])')  # split at '[', ']' and ','
 
@@ -636,7 +636,7 @@ class FortranObject(ObjectDescription):
     #        self._parse_type(signode[-1], ftype)
         if attrs:
             if ftype: signode += nodes.emphasis(',',',')
-            for iatt,att in enumerate(re.split('\s*,\s*', attrs)):
+            for iatt,att in enumerate(re.split(r'\s*,\s*', attrs)):
                 if iatt:
                     signode += nodes.emphasis(',',',')
                 if att.startswith('parameter'):
