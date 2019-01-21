@@ -47,11 +47,10 @@ from docutils.parsers.rst import Directive, directives
 
 from sphinx import addnodes, version_info
 from sphinx.roles import XRefRole
-from sphinx.locale import l_, _
+from sphinx.locale import _
 from sphinx.domains import Domain, ObjType, Index
 from sphinx.directives import ObjectDescription
 from sphinx.util.nodes import make_refnode
-# from sphinx.util.compat import Directive
 from sphinx.util.docfields import Field, GroupedField, TypedField, DocFieldTransformer, _is_single_paragraph
 
 import six
@@ -470,7 +469,7 @@ class FortranObject(ObjectDescription):
     }
 
     doc_field_types = [
-        FortranCompleteField('parameter', label=l_('Parameters'),
+        FortranCompleteField('parameter', label=_('Parameters'),
                    names=('p', 'param', 'parameter', 'a', 'arg', 'argument'),
                    #rolename='var',
                    typerolename='type',
@@ -478,7 +477,7 @@ class FortranObject(ObjectDescription):
                    shapenames=('shape', 'pshape'),
                    attrnames=('attrs', 'pattrs', 'attr'),
                    can_collapse=True),
-        FortranCompleteField('optional', label=l_('Options'),
+        FortranCompleteField('optional', label=_('Options'),
                    names=('o', 'optional', 'opt', 'keyword', 'option'),
                    #rolename='var',
                    typerolename='type',
@@ -486,7 +485,7 @@ class FortranObject(ObjectDescription):
                    shapenames=('oshape',),
                    attrnames=('oattrs', 'oattr'),
                    can_collapse=True),
-        FortranCompleteField('typefield', label=l_('Type fields'),
+        FortranCompleteField('typefield', label=_('Type fields'),
                    names=('f', 'field', 'typef', 'typefield'),
                    #rolename='typef',
                    typerolename='type',
@@ -496,16 +495,16 @@ class FortranObject(ObjectDescription):
                    prefix='% ',
                    strong=False,
                    can_collapse=False),
-        FortranCompleteField('return', label=l_('Return'),
+        FortranCompleteField('return', label=_('Return'),
                    names=('r', 'return', 'returns'),
                    typerolename='type',
                    typenames=('returntype', 'rtype'),
                    shapenames=('rshape',),
                    attrnames=('rattrs', 'rattr'),
                    can_collapse=True),
-        FortranCallField('calledfrom', label=l_('Called from'),
+        FortranCallField('calledfrom', label=_('Called from'),
             names=('calledfrom', 'from')),
-        FortranCallField('callto', label=l_('Call to'),
+        FortranCallField('callto', label=_('Call to'),
             names=('callto', 'to')),
     ]
 
@@ -1015,8 +1014,8 @@ class FortranModuleIndex(Index):
     """
 
     name = 'modindex'
-    localname = l_('Fortran Module Index')
-    shortname = l_('fortran modules')
+    localname = _('Fortran Module Index')
+    shortname = _('fortran modules')
 
     def generate(self, docnames=None):
         content = {}
@@ -1086,12 +1085,12 @@ class FortranDomain(Domain):
     name = 'f'
     label = 'Fortran'
     object_types = {
-        'program':      ObjType(l_('program'), 'prog'),
-        'type':         ObjType(l_('type'), 'type'),
-        'variable':     ObjType(l_('variable'), 'var'),
-        'function':     ObjType(l_('function'), 'func'),
-        'subroutine':   ObjType(l_('subroutine'), 'func', 'subr'),
-        'module':       ObjType(l_('module'), 'mod'),
+        'program':      ObjType(_('program'), 'prog'),
+        'type':         ObjType(_('type'), 'type'),
+        'variable':     ObjType(_('variable'), 'var'),
+        'function':     ObjType(_('function'), 'func'),
+        'subroutine':   ObjType(_('subroutine'), 'func', 'subr'),
+        'module':       ObjType(_('module'), 'mod'),
     }
 
     directives = {
