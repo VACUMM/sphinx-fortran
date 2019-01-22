@@ -5,9 +5,10 @@ Generic module
 With automodule
 ---------------
 
-.. f:automodule:: misc
+.. f:automodule:: generic
+
 
 With autosrcfile
 ----------------
 
-.. f:autosrcfile:: module_misc.f90
+.. f:autosrcfile:: module_generic.f90

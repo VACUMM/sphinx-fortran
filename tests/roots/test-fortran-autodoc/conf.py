@@ -15,6 +15,9 @@ exclude_patterns = ['_build']
 
 # Fortran autodoc
 fortran_src = [os.path.abspath(os.path.join(this_dir, path))
-               for path in ('module_assim.f90', 'module_misc.f90')]
+               for path in ('module_assim.f90',
+                            'module_generic.f90',
+                            'misc_routines.f90',
+                            )]
 print fortran_src
 

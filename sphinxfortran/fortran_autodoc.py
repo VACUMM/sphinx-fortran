@@ -269,7 +269,7 @@ class F90toRst(object):
             # reversed+sorted is a hack to avoid conflicts when variables share
             # the same prefix
             if block['sortvars']:
-                sreg = r'.*(?P<varname>%s)\s*(?P<dims>\([\*:,\w]+\))?[^!\)]*!\s*(?P<vardesc>.*)\s*' % '|'.join(
+                sreg = r'.*\b(?P<varname>%s)\b\s*(?P<dims>\([\*:,\w]+\))?[^!\)]*!\s*(?P<vardesc>.*)\s*' % '|'.join(
                     reversed(sorted(block['sortvars'])))
                 block['vardescsearch'] = re.compile(sreg, re.I).search
             else:
@@ -672,9 +672,6 @@ class F90toRst(object):
         module = module.lower()
         assert module in list(self.modules.keys()), "Wrong module name"
         baselist = list(getattr(self, choice).values())
-        # print(choice)
-        # print(baselist)
-        # print(module)
         return [v for v in baselist if 'module' in v and v['module']
                 == module.lower()]
 
@@ -986,6 +983,8 @@ class F90toRst(object):
             vattr.append('/'.join(block['intent']))
         if 'attrspec' in block and block['attrspec']:
             newattrs = []
+            default_value = (block['='] if '=' in block and
+                             not block['='].startswith('shape(') else None)
             for attr in block['attrspec']:
                 #                if '=' in block:
                 #                    if attr=='optional':
@@ -995,9 +994,11 @@ class F90toRst(object):
                 #                        #attr += '='+self.format_arithm(block['='])
                 #                if attr in []:
                 #                    attr = attr.upper()
+                if attr == 'optional' and default_value is None:
+                    continue
                 newattrs.append(attr)
-            if '=' in block:
-                newattrs.append('default=' + block['='])
+            if default_value is not None:
+                newattrs.append('default=' + default_value)
             if 'private' in newattrs and 'public' in newattrs:
                 newattrs.remove('private')
             block['attrspec'] = newattrs
@@ -1479,7 +1480,6 @@ class FortranAutoModuleDirective(Directive):
         # Check module name
         module = self.arguments[0]
         if module not in f90torst.modules:
-            #            print dir(self)
             print('Wrong fortran module name: ' + module)
             self.state_machine.reporter.warning(
                 'Wrong fortran module name: ' + module, line=self.lineno)
@@ -1606,8 +1606,6 @@ class FortranAutoProgramDirective(Directive):
     optional_arguments = 0
 
     def run(self):
-        print('test1')
-        self.state_machine.reporter.warning('test2', line=self.lineno)
 
         # Get environment
         f90torst = self.state.document.settings.env.config._f90torst

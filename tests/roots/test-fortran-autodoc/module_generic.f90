@@ -1,4 +1,4 @@
-module misc
+module generic
 ! A module of generic utilities
 
 integer, parameter :: nens = 100 ! Size of the ensemble
@@ -17,4 +17,4 @@ type mytest
 
 end type mytest
 
-end module misc
+end module generic
