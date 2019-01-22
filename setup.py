@@ -24,7 +24,13 @@ maintainer = author
 maintainer_email = author_email
 license = "CeCiLL-A"
 url = "http://sphinx-fortran.readthedocs.org"
-classifiers=[]
+classifiers = [
+        "License :: OSI Approved :: CEA CNRS Inria Logiciel Libre License, version 2.1 (CeCILL-2.1)",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        ]
 
 
 if __name__ == '__main__':
