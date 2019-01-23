@@ -98,6 +98,8 @@
                                                         real
                                                 <emphasis>
                                                     ]
+                                                 :: 
+                                                Array described in docstring
                                         <list_item>
                                             <paragraph>
                                                 <desc_name xml:space="preserve">
@@ -281,6 +283,8 @@
                                                         real
                                                 <emphasis>
                                                     ]
+                                                 :: 
+                                                Array described in docstring
                                         <list_item>
                                             <paragraph>
                                                 <desc_name xml:space="preserve">

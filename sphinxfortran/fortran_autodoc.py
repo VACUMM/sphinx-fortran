@@ -260,9 +260,9 @@ class F90toRst(object):
             re.I).findall or (
             lambda line: [])
         # - function variables
-        for block in list(self.routines.values()):
+        for block in list(self.routines.values())+list(self.types.values()):
             vars = (r'|').join(block['sortvars']) + r'|\$(?P<varnum>\d+)'
-            sreg = r'[\w\*\-:]*(?:@param\w*)?\b(?P<varname>%s)\b\W+(?P<vardesc>.*)' % vars
+            sreg = r'[\s\*\-:]*(?:@param\w*)?\b(?P<varname>%s)\b\W+(?P<vardesc>.*)' % vars
             block['vardescmatch'] = re.compile(sreg).match
         # - variables with description
 #        for block in self.types.values()+self.modules.values():
@@ -369,44 +369,46 @@ class F90toRst(object):
         # Comment
         block['desc'] = self.get_comment(subsrc, aslist=True)
 
+        # Scan comments to find descriptions
+        if block['desc'] and block['block'] in [
+                'function', 'subroutine', 'type']:
+            varname = None
+            for iline, line in enumerate(block['desc']):
+                if 'vardescmatch' in block:
+                    m = block['vardescmatch'](line)
+                    if m:  # There is a variable and its description
+
+                        # Name of variable
+                        varname = m.group('varname')
+
+                        # Numeric name
+                        if m.group('varnum'):  # $[1-9]+
+                            ivar = int(m.group('varnum'))
+                            ivar = ivar - 1
+                            if ivar < 0 or ivar >= len(block['args']):
+                                continue
+                            block['desc'][iline] = line.replace(
+                                varname, block['args'][ivar])
+                            varname = block['args'][ivar]
+
+                        # Store description
+                        ifirst = len(line) - len(line.strip())
+                        if varname != '':
+                            block['vars'][varname]['desc'] = m.group(
+                                'vardesc')
+
+                elif line.strip() and varname is not None and \
+                        (len(line) - len(line.strip())) > ifirst:
+                    # Description continuation?
+
+                    block['vars'][varname]['desc'].append(
+                        ' ' + line.strip())
+
+                else:
+                    varname = None
+
         # Callable objects
         if block['block'] in ['function', 'subroutine', 'program']:
-
-            # With signature : description of variables in comment
-            if block['block'] in ['function', 'subroutine']:
-                varname = None
-                for iline, line in enumerate(block['desc']):
-                    if 'vardescmatch' in block:
-                        m = block['vardescmatch'](line)
-                        if m:  # There is a variable and its description
-
-                            # Name of variable
-                            varname = m.group('varname')
-
-                            # Numeric name
-                            if m.group('varnum'):  # $[1-9]+
-                                ivar = int(m.group('varnum'))
-                                ivar = ivar - 1
-                                if ivar < 0 or ivar >= len(block['args']):
-                                    continue
-                                block['desc'][iline] = line.replace(
-                                    varname, block['args'][ivar])
-                                varname = block['args'][ivar]
-
-                            # Store description
-                            ifirst = len(line) - len(line.strip())
-                            if varname != '':
-                                block['vars'][varname]['desc'] = m.group(
-                                    'vardesc')
-
-                    elif line.strip() and varname is not None and \
-                            (len(line) - len(line.strip())) > ifirst:  # Description continuation?
-
-                        block['vars'][varname]['desc'].append(
-                            ' ' + line.strip())
-
-                    else:
-                        varname = None
 
             # Index calls
             block['callto'] = []
@@ -422,8 +424,8 @@ class F90toRst(object):
                             block['callto'].append(fn)
                             pass
 
-        # Get description of variables (overwrite for functions and
-        # subroutines)
+        # Get description of variables from inline comment that overwrites
+        # description inferred from header comment
         if block['block'] in [
             'function',
             'subroutine',
