@@ -11,16 +11,14 @@ from __future__ import print_function
 
 import pickle
 import os
-import xml.dom.minidom
 import warnings
 import difflib
 
 import pytest
 
-from sphinx import addnodes
+#from sphinx import addnodes
 
 this_dir = os.path.dirname(__file__)
-differ = difflib.Differ()
 
 
 def checkdir(path):
@@ -30,15 +28,14 @@ def checkdir(path):
 
 
 def check_result(test_name, result):
-#    print(type(result))
-#    print(dir(result))
-#    with open('toto.xml', 'w') as f:
-#        f.write(str(result[0]))
-#    xml_result = xml.dom.minidom.parseString(str(result)).toprettyxml()
     xml_result = result[0].pformat()
 
     ref_file = os.path.join(this_dir,
                             'references',
+                            'test-fortran-autodoc',
+                            test_name + '.xml')
+    out_file = os.path.join(this_dir,
+                            'outputs',
                             'test-fortran-autodoc',
                             test_name + '.xml')
     if not os.path.exists(ref_file):
@@ -47,11 +44,20 @@ def check_result(test_name, result):
         with open(ref_file, 'w') as f:
             f.write(xml_result)
     else:
+        checkdir(out_file)
+        with open(out_file, 'w') as f:
+            f.write(xml_result)
         with open(ref_file) as f:
             xml_ref = f.read()
-        assert xml_ref == xml_result, ('Invalid xml result. Differences: ' +
-                                       ''.join(differ.compare(xml_ref,
-                                                              xml_result)))
+        xml_result = xml_result.replace("u'", "'")
+        equal = xml_ref == xml_result
+        assert equal, (
+                'Invalid xml result. \n' +
+                'Reference file: {}\n'.format(ref_file) +
+                'Actual output: {}\n'.format(out_file) +
+                'Differences:\n' +
+                '\n'.join(difflib.context_diff(xml_ref.split('\n'),
+                                               xml_result.split('\n'))))
 
 
 @pytest.mark.sphinx('dummy', testroot='fortran-autodoc')

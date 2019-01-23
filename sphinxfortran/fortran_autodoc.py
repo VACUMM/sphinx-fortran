@@ -42,7 +42,8 @@ from builtins import object
 import six
 import re
 import os
-
+from collections import OrderedDict
+from operator import itemgetter
 
 from docutils.parsers.rst import Directive
 from docutils.parsers.rst.directives import unchanged
@@ -107,7 +108,7 @@ class F90toRst(object):
             ffiles = [ffiles]
 
         # Read and store them
-        self.src = {}
+        self.src = OrderedDict()
         self.ffiles = ffiles
         for ff in ffiles:
             f = open(ff)
@@ -145,7 +146,7 @@ class F90toRst(object):
         self.build_callfrom_index()
 
         # Other inits
-        self.rst = {}
+        self.rst = OrderedDict()
         self._ic = ic
         self._ulc = ulc
         self._sst = sst
@@ -174,11 +175,11 @@ class F90toRst(object):
                 Module specific variables
         """
         # Containers
-        self.modules = {}
-        self.types = {}
-        self.routines = self.functions = self.subroutines = {}
-        self.variables = {}
-        self.programs = {}
+        self.modules = OrderedDict()
+        self.types = OrderedDict()
+        self.routines = self.functions = self.subroutines = OrderedDict()
+        self.variables = OrderedDict()
+        self.programs = OrderedDict()
 
         # Loop on all blocks and subblocks
         for block in self.crack:
@@ -202,8 +203,11 @@ class F90toRst(object):
                         subblock['module'] = module
 
                         # Variables
-                        for varname, bvar in list(subblock['vars'].items()):
-                            bvar['name'] = varname
+                        varnames = subblock['sortvars']
+                        if subblock['block'] == 'type':
+                            varnames.sort()
+                        for varname in varnames:
+                            subblock['vars'][varname]['name'] = varname
 
                 # Function aliases from "use only" (rescan)
                 for bfunc in list(self.routines.values()):
@@ -220,7 +224,8 @@ class F90toRst(object):
                                 self.routines[fname]['aliases'].append(falias)
 
                 # Module variables
-                for varname, bvar in list(block['vars'].items()):
+                for varname in sorted(block['sortvars']):
+                    bvar = block['vars'][varname]
                     if varname not in self.routines:
                         self.variables[varname] = bvar
                         # self.variables.pop(varname)
@@ -235,29 +240,29 @@ class F90toRst(object):
                 container[block['name']] = block
 
                 # Variables
-                for varname, bvar in list(block['vars'].items()):
-                    bvar['name'] = varname
+                for varname in block['sortvars']:
+                    block['vars'][varname]['name'] = varname
 
         # Regular expression for fast search
         # - function calls
         subs = [block['name'].lower() for block in list(
             self.routines.values()) if block['block'] == 'subroutine']
         self._re_callsub_findall = subs and re.compile(
-            r'call\s+(%s)\b' %
+            r'call\s+\b(%s)\b' %
             ('|'.join(subs)),
             re.I).findall or (
             lambda line: [])
         funcs = [block['name'].lower() for block in list(
             self.routines.values()) if block['block'] == 'function']
         self._re_callfunc_findall = funcs and re.compile(
-            r'\b(%s)\s*\(' %
+            r'\b(%s)\b\s*\(' %
             ('|'.join(funcs)),
             re.I).findall or (
             lambda line: [])
         # - function variables
         for block in list(self.routines.values()):
-            vars = (r'|\b').join(block['sortvars']) + r'|\$(?P<varnum>\d+)'
-            sreg = r'[\w\*\-:]*(?:@param\w*)?(?P<varname>\b%s\b)\W+(?P<vardesc>.*)' % vars
+            vars = (r'|').join(block['sortvars']) + r'|\$(?P<varnum>\d+)'
+            sreg = r'[\w\*\-:]*(?:@param\w*)?\b(?P<varname>%s)\b\W+(?P<vardesc>.*)' % vars
             block['vardescmatch'] = re.compile(sreg).match
         # - variables with description
 #        for block in self.types.values()+self.modules.values():
@@ -662,7 +667,7 @@ class F90toRst(object):
         sd = ' '.join(sd)
         return sd
 
-    def get_blocklist(self, choice, module):
+    def get_blocklist(self, choice, module, sort=True):
         """Get the list of types, variables or function of a module"""
         choice = choice.lower()
         if not choice.endswith('s'):
@@ -670,10 +675,13 @@ class F90toRst(object):
         assert choice in ['types', 'variables', 'functions',
                           'subroutines'], "Wrong type of declaration"
         module = module.lower()
-        assert module in list(self.modules.keys()), "Wrong module name"
+        assert module in self.modules, "Wrong module name"
         baselist = list(getattr(self, choice).values())
-        return [v for v in baselist if 'module' in v and v['module']
-                == module.lower()]
+        sellist = [v for v in baselist if 'module' in v and v['module']
+                   == module.lower()]
+        if sort:
+            sellist.sort(key=itemgetter('name'))
+        return sellist
 
     # Formating ---
 
@@ -1057,7 +1065,8 @@ class F90toRst(object):
 
         # Variables
         vlines = []
-        for bvar in list(block['vars'].values()):
+        for varname in sorted(block['sortvars']):
+            bvar = block['vars'][varname]
             vlines.append(self.format_argfield(bvar, role='f'))
         variables = self.format_lines(vlines, indent=indent + 1) + '\n'
         del vlines
@@ -1066,7 +1075,7 @@ class F90toRst(object):
 
     def get_varopts(self, block):
         """Get options for variable declaration as a dict"""
-        options = {}
+        options = OrderedDict()
         vdim = self.format_argdim(block)
         #if vdim!='': vdim = self._fmt_fvardim%locals()
         if vdim:
@@ -1240,7 +1249,6 @@ class F90toRst(object):
 
         # Variables
         vlist = self.get_blocklist('variables', module)
-        # vlist.sort()  # broken in Python3
         if vlist:
             decs.append(':Variables: ' +
                         ', '.join([':f:var:`%s`' %
@@ -1248,7 +1256,6 @@ class F90toRst(object):
 
         # Functions and subroutines
         flist = self.get_blocklist('functions', module)
-        # flist.sort()  # broken in Python3
         if flist:
             decs.append(':Routines: ' +
                         ', '.join([':f:func:`~%s/%s`' %
@@ -1275,7 +1282,11 @@ class F90toRst(object):
         """Format the description of all variables (global or module)"""
         variables = ''
         if block['vars']:
-            for bvar in list(block['vars'].values()):
+            varnames = block['sortvars']
+            if block['block'] == 'module':
+                varnames.sort()
+            for varname in varnames:
+                bvar = block['vars'][varname]
                 variables += self.format_var(bvar, indent=indent)
             variables = self.format_subsection(
                 'Variables', indent=indent) + variables + '\n\n'
@@ -1480,7 +1491,6 @@ class FortranAutoModuleDirective(Directive):
         # Check module name
         module = self.arguments[0]
         if module not in f90torst.modules:
-            print('Wrong fortran module name: ' + module)
             self.state_machine.reporter.warning(
                 'Wrong fortran module name: ' + module, line=self.lineno)
 #            self.warn('Wrong fortran module name: '+module)
@@ -1488,12 +1498,13 @@ class FortranAutoModuleDirective(Directive):
         # Options
         ic = f90torst.ic
         ulc = f90torst.ulc
+        sst = f90torst.sst
         if self.options.get('indent'):
             f90torst.ic = self.options['indent']
         if self.options.get('title_underline'):
             f90torst.ulc = self.options['title_underline']
         if self.options.get('subsection_type'):
-            f90torst.ulc = self.options['subsection_type']
+            f90torst.sst = self.options['subsection_type']
 
         # Get rst
         raw_text = f90torst.format_module(module)
@@ -1535,7 +1546,7 @@ class FortranAutoObjectDirective(Directive):
 
     """
     has_content = False
-    option_spec = {}
+    option_spec = OrderedDict()
     required_arguments = 1
     optional_arguments = 0
     _warning = 'Wrong routine name: %s'
@@ -1555,7 +1566,7 @@ class FortranAutoObjectDirective(Directive):
             objname = objname.split(f_sep)[-1]  # remove module name
         objects = getattr(f90torst, self._objtype + 's')
         if objname not in objects:
-            print(self._warning % objname)
+#            print(self._warning % objname)
             self.state_machine.reporter.warning(
                 self._warning %
                 objname, line=self.lineno)
@@ -1601,7 +1612,7 @@ class FortranAutoVariableDirective(FortranAutoObjectDirective):
 
 class FortranAutoProgramDirective(Directive):
     has_content = False
-    option_spec = {}
+    option_spec = OrderedDict()
     required_arguments = 1
     optional_arguments = 0
 
@@ -1615,7 +1626,7 @@ class FortranAutoProgramDirective(Directive):
         # Check routine name
         program = self.arguments[0].lower()
         if program not in f90torst.programs:
-            print('Wrong program name: ' + program)
+#            print('Wrong program name: ' + program)
             self.state_machine.reporter.warning(
                 'Wrong program name: ' + program, line=self.lineno)
 #            self.warning('Wrong program name: '+program)
@@ -1657,7 +1668,7 @@ class FortranAutoSrcfileDirective(Directive):
             srcfile, search_mode=search_mode, objtype=objtype)
         if not raw_text:
             msg = 'No valid content found for file: ' + srcfile
-            print(msg)
+#            print(msg)
             self.state_machine.reporter.warning(msg, line=self.lineno)
 #            self.warning('No valid content found for file: '+srcfile)
 

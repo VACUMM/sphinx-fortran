@@ -12,8 +12,8 @@ type mytest
     ! - **arr2**: Array described in docstring
 
     integer :: myint ! Description of myint
-    real(kind=4) :: arr(10), ! Array of fixed size
-        arr2(20)
+    real(kind=4) :: arr(10), &! Array of fixed size
+        & arr2(20)
 
 end type mytest
 

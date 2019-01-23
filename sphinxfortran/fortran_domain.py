@@ -41,6 +41,7 @@ from builtins import zip
 from builtins import str
 from builtins import object
 import re
+from collections import OrderedDict
 
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
@@ -259,7 +260,7 @@ class FortranDocFieldTransformer(DocFieldTransformer):
         self.typename = typename
 
     def preprocess_fieldtypes(self, types):
-        typemap = {}
+        typemap = OrderedDict()
         for fieldtype in types:
             for name in fieldtype.names:
                 typemap[name] = fieldtype, False
@@ -305,10 +306,10 @@ class FortranDocFieldTransformer(DocFieldTransformer):
         ftypename = self.typename
 
         entries = []
-        groupindices = {}
-        types = {}
-        shapes = {}
-        attrs = {}
+        groupindices = OrderedDict()
+        types = OrderedDict()
+        shapes = OrderedDict()
+        attrs = OrderedDict()
 
         # step 1: traverse all fields and collect field types and content
         for field in node:
@@ -347,7 +348,7 @@ class FortranDocFieldTransformer(DocFieldTransformer):
                            isinstance(n, nodes.Text)]
                 if content:
                     eval(is_typefield).setdefault(
-                        typename, {})[fieldarg] = content
+                        typename, OrderedDict())[fieldarg] = content
                 continue
 
             # also support syntax like ``:param type name [attrs]:``
@@ -355,13 +356,13 @@ class FortranDocFieldTransformer(DocFieldTransformer):
                 argname, argshape, argtype, argattrs = self.scan_fieldarg(
                     fieldarg)
                 if argtype:
-                    types.setdefault(typename, {})[argname] = \
+                    types.setdefault(typename, OrderedDict())[argname] = \
                         [nodes.Text(argtype)]
                 if argshape:
-                    shapes.setdefault(typename, {})[argname] = \
+                    shapes.setdefault(typename, OrderedDict())[argname] = \
                         [nodes.Text(argshape)]
                 if argattrs:
-                    attrs.setdefault(typename, {})[argname] = \
+                    attrs.setdefault(typename, OrderedDict())[argname] = \
                         [nodes.emphasis(argattrs, argattrs)]
                 fieldarg = argname
             elif typedesc.is_typed:
@@ -370,7 +371,7 @@ class FortranDocFieldTransformer(DocFieldTransformer):
                 except ValueError:
                     pass
                 else:
-                    types.setdefault(typename, {})[argname] = \
+                    types.setdefault(typename, OrderedDict())[argname] = \
                         [nodes.Text(argtype)]
                     fieldarg = argname
 
@@ -396,9 +397,9 @@ class FortranDocFieldTransformer(DocFieldTransformer):
                 new_list += entry
             else:
                 fieldtype, content = entry
-                fieldtypes = types.get(fieldtype.name, {})
-                fieldshapes = shapes.get(fieldtype.name, {})
-                fieldattrs = attrs.get(fieldtype.name, {})
+                fieldtypes = types.get(fieldtype.name, OrderedDict())
+                fieldshapes = shapes.get(fieldtype.name, OrderedDict())
+                fieldattrs = attrs.get(fieldtype.name, OrderedDict())
                 new_list += fieldtype.make_field(fieldtypes,
                                                  self.domain,
                                                  content,
@@ -1038,7 +1039,7 @@ class FortranCurrentModule(Directive):
     required_arguments = 0
     optional_arguments = 1
     final_argument_whitespace = False
-    option_spec = {}
+    option_spec = OrderedDict()
 
     def run(self):
         env = self.state.document.settings.env
@@ -1082,7 +1083,7 @@ class FortranModuleIndex(Index):
     shortname = _('fortran modules')
 
     def generate(self, docnames=None):
-        content = {}
+        content = OrderedDict()
         # list of prefixes to ignore
         ignores = self.domain.env.config['modindex_common_prefix']
         ignores = sorted(ignores, key=len, reverse=True)
@@ -1176,8 +1177,8 @@ class FortranDomain(Domain):
         'mod': FortranXRefRole(),
     }
     initial_data = {
-        'objects': {},  # fullname -> docname, objtype
-        'modules': {},  # modname -> docname, synopsis, platform, deprecated
+        'objects': OrderedDict(),  # fullname -> docname, objtype
+        'modules': OrderedDict(),  # modname -> docname, synopsis, platform, deprecated
     }
     indices = [
         FortranModuleIndex,
