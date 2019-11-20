@@ -39,18 +39,20 @@ The ``sphinx`` and ``numpy`` packages.
 Installation
 ------------
 
-Using ``pip``::
+With ``pip``::
 
     pip install sphinx-fortran
+
+
+With ``conda``::
+
+    conda install -c vacumm -c conda-forge sphinx-fortran
 
 From sources::
 
     git clone https://github.com/VACUMM/sphinx-fortran.git
     cd sphinx-fortran
     python setup.py install
-
-You can download sources also from the forge at IFREMER:
-https://forge.ifremer.fr/frs/?group_id=93
 
 
 Quick start
@@ -77,7 +79,7 @@ Authors
 
 Stephane Raynaud (stephane.raynaud(at)gmail.com)
 
-Thanks: Thomas Gastine
+Thanks: Thomas Gastine and other pull request contributors.
 
 
 Documentation
