@@ -1,0 +1,105 @@
+<section ids="assimilation-module" names="assimilation\ module">
+    <title>
+        Assimilation module
+    <index entries="('single',\ 'utl_matsqrt()\ (fortran\ subroutine)',\ 'f/_/utl_matsqrt',\ 'f/_/utl_matsqrt',\ None)">
+    <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
+        <desc_signature first="False" fullname="_/utl_matsqrt" ids="f/_/utl_matsqrt" module="True" names="f/_/utl_matsqrt" type="">
+            <desc_annotation xml:space="preserve">
+                subroutine  
+            <desc_name xml:space="preserve">
+                utl_matsqrt
+            <desc_parameterlist xml:space="preserve">
+                <desc_parameter xml:space="preserve">
+                    pa
+                <desc_parameter xml:space="preserve">
+                    kn
+                <desc_parameter xml:space="preserve">
+                    zsign
+                <desc_optional xml:space="preserve">
+                    <desc_parameter xml:space="preserve">
+                        printinformation_opt
+        <desc_content>
+            <block_quote>
+                <paragraph>
+                    Calculate square root of an error covariance matrix
+            <field_list>
+                <field>
+                    <field_name>
+                        Parameters
+                    <field_body>
+                        <bullet_list>
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        pa
+                                     (
+                                    <pending_xref modname="True" refdomain="f" reftarget="kn" reftype="var">
+                                        kn
+                                    ,
+                                    <pending_xref modname="True" refdomain="f" reftarget="kn" reftype="var">
+                                        kn
+                                    )
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                        <emphasis>
+                                            real
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        inout
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    on entry, the original matrix; on exit, the sqrt matrix
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        kn
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                        <emphasis>
+                                            integer
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        in,
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    order of the matrix
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        zsign
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                        <emphasis>
+                                            real
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        in
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    sign of the exponent
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        printinformation_opt
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="logical" reftype="type" typename="">
+                                        <emphasis>
+                                            logical
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        in,
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    request more verbose output

@@ -1,0 +1,186 @@
+<section ids="misc-routines" names="misc\ routines">
+    <title>
+        Misc routines
+    <index entries="('single',\ 'calc_distance()\ (fortran\ subroutine)',\ 'f/_/calc_distance',\ 'f/_/calc_distance',\ None)">
+    <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
+        <desc_signature first="False" fullname="_/calc_distance" ids="f/_/calc_distance" module="True" names="f/_/calc_distance" type="">
+            <desc_annotation xml:space="preserve">
+                subroutine  
+            <desc_name xml:space="preserve">
+                calc_distance
+            <desc_parameterlist xml:space="preserve">
+                <desc_parameter xml:space="preserve">
+                    np
+                <desc_parameter xml:space="preserve">
+                    nd
+                <desc_parameter xml:space="preserve">
+                    pos
+                <desc_parameter xml:space="preserve">
+                    i
+                <desc_parameter xml:space="preserve">
+                    j
+                <desc_parameter xml:space="preserve">
+                    rij
+                <desc_parameter xml:space="preserve">
+                    d
+                <desc_parameter xml:space="preserve">
+                    d2
+        <desc_content>
+            <block_quote>
+                <paragraph>
+                    Calculate Distance vector, scalar distance and trucated distance
+                    between atoms i and j.
+                    The distance is truncated at pi/2
+            <field_list>
+                <field>
+                    <field_name>
+                        Parameters
+                    <field_body>
+                        <bullet_list>
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        np
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                        <emphasis>
+                                            integer
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        in,
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    number of particles
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        nd
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                        <emphasis>
+                                            integer
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        in,
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    number of dimensions
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        pos
+                                     (
+                                    <pending_xref modname="True" refdomain="f" reftarget="nd" reftype="var">
+                                        nd
+                                    ,
+                                    <pending_xref modname="True" refdomain="f" reftarget="np" reftype="var">
+                                        np
+                                    )
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                        <emphasis>
+                                            real
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        in
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    positions
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        i
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                        <emphasis>
+                                            integer
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        in
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    index particle I
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        j
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                        <emphasis>
+                                            integer
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        in
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    index particle J
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        rij
+                                     (
+                                    <pending_xref modname="True" refdomain="f" reftarget="nd" reftype="var">
+                                        nd
+                                    )
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                        <emphasis>
+                                            real
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        out
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    distance vector
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        d
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                        <emphasis>
+                                            real
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        out
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    distance
+                            <list_item>
+                                <paragraph>
+                                    <strong>
+                                        d2
+                                    <emphasis>
+                                         [
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                        <emphasis>
+                                            real
+                                    <emphasis>
+                                        ,
+                                    <emphasis>
+                                        out
+                                    <emphasis>
+                                        ]
+                                     :: 
+                                    trucated distance

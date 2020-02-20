@@ -3,7 +3,7 @@
 
 
 """
-# Copyright or © or Copr. Actimar/IFREMER (2010-2015)
+# Copyright or © or Copr. Actimar/IFREMER (2010-2019)
 #
 # This software is a computer program whose purpose is to provide
 # utilities for handling oceanographic and atmospheric data,
@@ -36,7 +36,8 @@
 # knowledge of the CeCILL license and that you accept its terms.
 #
 
-__version__ = '1.0.1'
+__version__ = '1.1.1'
+__date__ = "2019-11-20"
 __author__ = 'Stephane Raynaud'
 __email__ = 'stephane.raynaud@gmail.com'
-__copyright__ = 'Copyright (c) 2010-2015 Actimar/IFREMER'
+__copyright__ = 'Copyright (c) 2010-2019 Actimar/IFREMER'

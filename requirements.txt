@@ -1,2 +1,4 @@
 sphinx >= 1.0
 numpy >= 1.0
+six
+future

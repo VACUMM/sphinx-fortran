@@ -1,0 +1,373 @@
+<section ids="generic-module" names="generic\ module">
+    <title>
+        Generic module
+    <section ids="f/generic with-automodule" names="with\ automodule">
+        <title>
+            With automodule
+        <index entries="('single',\ 'generic\ (module)',\ 'f/generic',\ 'generic',\ None)">
+        <rubric>
+            Description
+        <paragraph>
+            A module of generic utilities
+        <rubric>
+            Quick access
+        <field_list>
+            <field>
+                <field_name>
+                    Types
+                <field_body>
+                    <paragraph>
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="mytest" reftype="type" refwarn="False">
+                            <literal classes="xref f f-type">
+                                mytest
+            <field>
+                <field_name>
+                    Variables
+                <field_body>
+                    <paragraph>
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="nens" reftype="var" refwarn="False">
+                            <literal classes="xref f f-var">
+                                nens
+                        , 
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="sss" reftype="var" refwarn="False">
+                            <literal classes="xref f f-var">
+                                sss
+                        , 
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="sst" reftype="var" refwarn="False">
+                            <literal classes="xref f f-var">
+                                sst
+        <rubric>
+            Types
+        <bullet_list bullet="-">
+            <list_item>
+                <index entries="('single',\ 'mytest\ (fortran\ type\ in\ module\ generic)',\ 'f/generic/mytest',\ 'f/generic/mytest',\ None)">
+                <desc desctype="type" domain="f" noindex="False" objtype="type">
+                    <desc_signature first="False" fullname="generic/mytest" ids="f/generic/mytest" module="generic" names="f/generic/mytest" type="">
+                        <desc_annotation xml:space="preserve">
+                            type  
+                        <desc_addname xml:space="preserve">
+                            generic/
+                        <desc_name xml:space="preserve">
+                            mytest
+                    <desc_content>
+                        <paragraph>
+                            Description of my type
+                        <paragraph>
+                            : Parameters:
+                            - 
+                            <strong>
+                                arr2
+                            : Array described in docstring
+                        <field_list>
+                            <field>
+                                <field_name>
+                                    Type fields
+                                <field_body>
+                                    <bullet_list>
+                                        <list_item>
+                                            <paragraph>
+                                                <desc_name xml:space="preserve">
+                                                    % 
+                                                <desc_name xml:space="preserve">
+                                                    arr
+                                                 (
+                                                10
+                                                )
+                                                <emphasis>
+                                                     [
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                    <emphasis>
+                                                        real
+                                                <emphasis>
+                                                    ]
+                                                 :: 
+                                                Array of fixed size
+                                        <list_item>
+                                            <paragraph>
+                                                <desc_name xml:space="preserve">
+                                                    % 
+                                                <desc_name xml:space="preserve">
+                                                    arr2
+                                                 (
+                                                20
+                                                )
+                                                <emphasis>
+                                                     [
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                    <emphasis>
+                                                        real
+                                                <emphasis>
+                                                    ]
+                                                 :: 
+                                                Array described in docstring
+                                        <list_item>
+                                            <paragraph>
+                                                <desc_name xml:space="preserve">
+                                                    % 
+                                                <desc_name xml:space="preserve">
+                                                    myint
+                                                <emphasis>
+                                                     [
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                                    <emphasis>
+                                                        integer
+                                                <emphasis>
+                                                    ]
+                                                 :: 
+                                                Description of myint
+        <rubric>
+            Variables
+        <bullet_list bullet="-">
+            <list_item>
+                <index entries="('single',\ 'nens\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/nens',\ 'f/generic/nens',\ None)">
+                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature first="False" fullname="generic/nens" ids="f/generic/nens" module="generic" names="f/generic/nens" type="">
+                        <desc_addname xml:space="preserve">
+                            generic/
+                        <desc_name xml:space="preserve">
+                            nens
+                        <emphasis>
+                             [
+                        <pending_xref modname="generic" refdomain="f" reftarget="integer" reftype="type">
+                            <emphasis>
+                                integer
+                        <emphasis>
+                            ,
+                        <emphasis>
+                            parameter=
+                        100
+                        <emphasis>
+                            ]
+                    <desc_content>
+                        <paragraph>
+                            Size of the ensemble
+            <list_item>
+                <index entries="('single',\ 'sss\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sss',\ 'f/generic/sss',\ None)">
+                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature first="False" fullname="generic/sss" ids="f/generic/sss" module="generic" names="f/generic/sss" type="">
+                        <desc_addname xml:space="preserve">
+                            generic/
+                        <desc_name xml:space="preserve">
+                            sss
+                         (
+                        100
+                        )
+                        <emphasis>
+                             [
+                        <pending_xref modname="generic" refdomain="f" reftarget="real" reftype="type">
+                            <emphasis>
+                                real
+                        <emphasis>
+                            ]
+                    <desc_content>
+                        <paragraph>
+                            Sea surface salinity
+            <list_item>
+                <index entries="('single',\ 'sst\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sst',\ 'f/generic/sst',\ None)">
+                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature first="False" fullname="generic/sst" ids="f/generic/sst" module="generic" names="f/generic/sst" type="">
+                        <desc_addname xml:space="preserve">
+                            generic/
+                        <desc_name xml:space="preserve">
+                            sst
+                         (
+                        100
+                        )
+                        <emphasis>
+                             [
+                        <pending_xref modname="generic" refdomain="f" reftarget="real" reftype="type">
+                            <emphasis>
+                                real
+                        <emphasis>
+                            ]
+                    <desc_content>
+                        <paragraph>
+                            Sea surface temperature
+    <section ids="with-autosrcfile" names="with\ autosrcfile">
+        <title>
+            With autosrcfile
+        <rubric>
+            Module
+        <target ids="f/generic" ismod="True">
+        <index entries="('single',\ 'generic\ (module)',\ 'f/generic',\ 'generic',\ None)">
+        <rubric>
+            Description
+        <paragraph>
+            A module of generic utilities
+        <rubric>
+            Quick access
+        <field_list>
+            <field>
+                <field_name>
+                    Types
+                <field_body>
+                    <paragraph>
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="mytest" reftype="type" refwarn="False">
+                            <literal classes="xref f f-type">
+                                mytest
+            <field>
+                <field_name>
+                    Variables
+                <field_body>
+                    <paragraph>
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="nens" reftype="var" refwarn="False">
+                            <literal classes="xref f f-var">
+                                nens
+                        , 
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="sss" reftype="var" refwarn="False">
+                            <literal classes="xref f f-var">
+                                sss
+                        , 
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="sst" reftype="var" refwarn="False">
+                            <literal classes="xref f f-var">
+                                sst
+        <rubric>
+            Types
+        <bullet_list bullet="-">
+            <list_item>
+                <index entries="('single',\ 'mytest\ (fortran\ type\ in\ module\ generic)',\ 'f/generic/mytest',\ 'f/generic/mytest',\ None)">
+                <desc desctype="type" domain="f" noindex="False" objtype="type">
+                    <desc_signature first="False" fullname="generic/mytest" module="generic" type="">
+                        <desc_annotation xml:space="preserve">
+                            type  
+                        <desc_addname xml:space="preserve">
+                            generic/
+                        <desc_name xml:space="preserve">
+                            mytest
+                    <desc_content>
+                        <paragraph>
+                            Description of my type
+                        <paragraph>
+                            : Parameters:
+                            - 
+                            <strong>
+                                arr2
+                            : Array described in docstring
+                        <field_list>
+                            <field>
+                                <field_name>
+                                    Type fields
+                                <field_body>
+                                    <bullet_list>
+                                        <list_item>
+                                            <paragraph>
+                                                <desc_name xml:space="preserve">
+                                                    % 
+                                                <desc_name xml:space="preserve">
+                                                    arr
+                                                 (
+                                                10
+                                                )
+                                                <emphasis>
+                                                     [
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                    <emphasis>
+                                                        real
+                                                <emphasis>
+                                                    ]
+                                                 :: 
+                                                Array of fixed size
+                                        <list_item>
+                                            <paragraph>
+                                                <desc_name xml:space="preserve">
+                                                    % 
+                                                <desc_name xml:space="preserve">
+                                                    arr2
+                                                 (
+                                                20
+                                                )
+                                                <emphasis>
+                                                     [
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                    <emphasis>
+                                                        real
+                                                <emphasis>
+                                                    ]
+                                                 :: 
+                                                Array described in docstring
+                                        <list_item>
+                                            <paragraph>
+                                                <desc_name xml:space="preserve">
+                                                    % 
+                                                <desc_name xml:space="preserve">
+                                                    myint
+                                                <emphasis>
+                                                     [
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                                    <emphasis>
+                                                        integer
+                                                <emphasis>
+                                                    ]
+                                                 :: 
+                                                Description of myint
+        <rubric>
+            Variables
+        <bullet_list bullet="-">
+            <list_item>
+                <index entries="('single',\ 'nens\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/nens',\ 'f/generic/nens',\ None)">
+                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature first="False" fullname="generic/nens" module="generic" type="">
+                        <desc_addname xml:space="preserve">
+                            generic/
+                        <desc_name xml:space="preserve">
+                            nens
+                        <emphasis>
+                             [
+                        <pending_xref modname="generic" refdomain="f" reftarget="integer" reftype="type">
+                            <emphasis>
+                                integer
+                        <emphasis>
+                            ,
+                        <emphasis>
+                            parameter=
+                        100
+                        /
+                        <pending_xref modname="generic" refdomain="f" reftarget="default" reftype="var">
+                            default
+                        <emphasis>
+                            ]
+                    <desc_content>
+                        <paragraph>
+                            Size of the ensemble
+            <list_item>
+                <index entries="('single',\ 'sss\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sss',\ 'f/generic/sss',\ None)">
+                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature first="False" fullname="generic/sss" module="generic" type="">
+                        <desc_addname xml:space="preserve">
+                            generic/
+                        <desc_name xml:space="preserve">
+                            sss
+                         (
+                        100
+                        )
+                        <emphasis>
+                             [
+                        <pending_xref modname="generic" refdomain="f" reftarget="real" reftype="type">
+                            <emphasis>
+                                real
+                        <emphasis>
+                            ]
+                    <desc_content>
+                        <paragraph>
+                            Sea surface salinity
+            <list_item>
+                <index entries="('single',\ 'sst\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sst',\ 'f/generic/sst',\ None)">
+                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature first="False" fullname="generic/sst" module="generic" type="">
+                        <desc_addname xml:space="preserve">
+                            generic/
+                        <desc_name xml:space="preserve">
+                            sst
+                         (
+                        100
+                        )
+                        <emphasis>
+                             [
+                        <pending_xref modname="generic" refdomain="f" reftarget="real" reftype="type">
+                            <emphasis>
+                                real
+                        <emphasis>
+                            ]
+                    <desc_content>
+                        <paragraph>
+                            Sea surface temperature

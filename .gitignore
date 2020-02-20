@@ -56,4 +56,13 @@ doc/build/
 # PyBuilder
 target/
 
+# pytest
+.pytest_cache/
+
+# spyder
+.spyproject/
+
+# Misc
 *~
+*.bak
+
