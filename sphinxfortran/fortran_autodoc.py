@@ -4,7 +4,10 @@
 
 """
 # Copyright or © or Copr. Actimar/IFREMER (2010-2019)
+#
+# This software is a computer program whose purpose is to provide
 # utilities for handling oceanographic and atmospheric data,
+# with the ultimate goal of validating the MARS model from IFREMER.
 #
 # This software is governed by the CeCILL license under French law and
 # abiding by the rules of distribution of free software.  You can  use,
@@ -182,7 +185,7 @@ class F90toRst(object):
 
             # Modules
             if block['block'] == 'module':
-    
+
                 # Index module
                 module = block['name']
                 self.modules[module] = block
@@ -320,7 +323,7 @@ class F90toRst(object):
 
             # Modules
             if block['block'] == 'module':
-    
+
                 # Get source lines
                 modsrc = self.get_blocksrc(block)
 
@@ -451,7 +454,7 @@ class F90toRst(object):
                 break
             block = block['parentblock']
         return block['name']
-        
+
     def get_src(self, block):
         """Get the source lines of the file including this block"""
         srcfile = block['from'].split(':')[0]
@@ -461,7 +464,7 @@ class F90toRst(object):
         """Join unended lines that does not finish with a comment"""
         for iline, line in enumerate(src):
             m = self._re_unended_match(line)
-            if m and iline<len(src)-1:
+            if m and iline < len(src) - 1:
                 thisline = m.group(1)
                 m = self._re_unstarted_match(src[iline + 1])
                 nextline = m.group(1) if m else src[iline + 1]
@@ -518,11 +521,12 @@ class F90toRst(object):
 
         # End
         for ilast in range(ifirst, len(src)):
-            if stopmatch and stopmatch(src[ilast]): break
-            if rend(src[ilast].lower()): break
+            if stopmatch and stopmatch(src[ilast]):
+                break
+            if rend(src[ilast].lower()):
+                break
 
         # Extraction
-        mysrc = list(src[ifirst:ilast+1])
         mysrc = list(src[ifirst:ilast + 1])
 
         # Block exclusions
@@ -747,7 +751,7 @@ class F90toRst(object):
                 tmp.append(line)
             else:
                 tmp.extend(line.splitlines())
-        
+
         lines = tmp
         del tmp
 
