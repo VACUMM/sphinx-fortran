@@ -1011,8 +1011,7 @@ class F90toRst(object):
                 newattrs.append('default=' + default_value)
             if 'private' in newattrs and 'public' in newattrs:
                 newattrs.remove('private')
-            block['attrspec'] = newattrs
-            vattr.append('/'.join(block['attrspec']))
+            vattr.append('/'.join(newattrs))
         if not vattr:
             return ''
         vattr = ','.join(vattr)
@@ -1042,7 +1041,7 @@ class F90toRst(object):
             vdim = vdim.replace(':', '*')
         vattr = self.format_argattr(blockvar)
         vdesc = blockvar['desc'] if 'desc' in blockvar else ''
-        optional = 'attrspec' in blockvar and 'optional' in blockvar['attrspec']
+        optional = 'attrspec' in blockvar and 'optional' in blockvar['attrspec'] and 'depend' not in blockvar
         if not role:
             if block and vname in [block['name'], block.get('result')]:
                 role = 'r'
