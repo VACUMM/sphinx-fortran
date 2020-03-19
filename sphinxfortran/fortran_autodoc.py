@@ -1024,6 +1024,13 @@ class F90toRst(object):
         vtype = block['typespec']
         if vtype == 'type':
             vtype = block['typename']
+        elif vtype == 'character' and 'charselector' in block:
+            if 'len' in block['charselector']:
+                vtype += '(len=%s)' % block['charselector']['len']
+            elif '*' in block['charselector'] and block['charselector']['*'] != '(*)':
+                vtype += '(len=%s)' % block['charselector']['*']
+            else:
+                vtype += '(len=*)'
         return vtype
 
     def format_argfield(self, blockvar, role=None, block=None):
