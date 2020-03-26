@@ -226,7 +226,7 @@ class F90toRst(object):
                 # Module variables
                 for varname in sorted(block['sortvars']):
                     bvar = block['vars'][varname]
-                    if varname not in self.routines:
+                    if varname not in self.routines and varname not in self.types:
                         self.variables[varname] = bvar
                         # self.variables.pop(varname)
                         bvar['name'] = varname
