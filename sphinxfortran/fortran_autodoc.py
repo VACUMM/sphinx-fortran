@@ -150,6 +150,7 @@ class F90toRst(object):
         self._ic = ic
         self._ulc = ulc
         self._sst = sst
+        self.exclude_private = False
 
     # Indexing ---
 
@@ -201,6 +202,8 @@ class F90toRst(object):
                         container = getattr(self, subblock['block'] + 's')
                         container[subblock['name']] = subblock
                         subblock['module'] = module
+                        if subblock['name'] in block['vars']:
+                            subblock['attrspec'] = block['vars'][subblock['name']].get('attrspec', [])
 
                         # Variables
                         varnames = subblock['sortvars']
@@ -680,7 +683,7 @@ class F90toRst(object):
         assert module in self.modules, "Wrong module name"
         baselist = list(getattr(self, choice).values())
         sellist = [v for v in baselist if 'module' in v and v['module']
-                   == module.lower()]
+                   == module.lower() and self.is_exposed(v)]
         if sort:
             sellist.sort(key=itemgetter('name'))
         return sellist
@@ -719,6 +722,11 @@ class F90toRst(object):
         get_sst,
         set_sst,
         doc='Subsection type ("title" or "rubric")')
+
+    def is_exposed(self, obj):
+        """Define if an object have to be documented"""
+        return not self.exclude_private or \
+               'private' not in obj.get('attrspec', [])
 
     def indent(self, n):
         """Get a proper indentation"""
@@ -1213,26 +1221,28 @@ class F90toRst(object):
                 callfrom = []
 
                 for fromname in block['callfrom']:
-                    if fromname in self.routines:
+                    cf = None
+                    if fromname in self.routines and self.is_exposed(self.routines[fromname]):
                         cf = self.format_funcref(fromname, module)
-                    else:
+                    elif fromname not in self.routines:
                         cf = ':f:prog:`%s`' % fromname
-                    callfrom.append(cf)
+                    if cf is not None:
+                        callfrom.append(cf)
 
                 # callfrom += ', '.join([self.format_funcref(getattr(self,
                 # routines[fn]['name'], module) for fn in block['callfrom']])
-                callfrom = ':from: ' + ', '.join(callfrom)
-
-                calls.append(callfrom)
+                if len(callfrom) > 0:
+                    callfrom = ':from: ' + ', '.join(callfrom)
+                    calls.append(callfrom)
         # - call tos
         if block['callto']:
             callto = ', '.join([self.format_funcref(fn, module)
-                                for fn in block['callto']])
+                                for fn in block['callto']
+                                if self.is_exposed(self.routines[fn])])
             #callto = ', '.join([self.format_funcref(self.routines[fn]['name'], module) for fn in block['callto']])
-            if callto == '':
-                callto = 'None'
-            callto = ':to: ' + callto
-            calls.append(callto)
+            if callto != '':
+                callto = ':to: ' + callto
+                calls.append(callto)
         calls = '\n' + self.format_lines(calls, indent=indent + 1)
         return declaration + description + use + calls + '\n\n'
 
@@ -1277,7 +1287,7 @@ class F90toRst(object):
         """Format the description of all fortran types"""
         types = []
         for subblock in block['body']:
-            if subblock['block'] == 'type':
+            if subblock['block'] == 'type' and self.is_exposed(subblock):
                 types.append(self.format_type(subblock, indent=indent))
         if types:
             types = self.format_subsection(
@@ -1295,9 +1305,11 @@ class F90toRst(object):
                 varnames.sort()
             for varname in varnames:
                 bvar = block['vars'][varname]
-                variables += self.format_var(bvar, indent=indent)
-            variables = self.format_subsection(
-                'Variables', indent=indent) + variables + '\n\n'
+                if self.is_exposed(bvar):
+                    variables += self.format_var(bvar, indent=indent)
+            if variables:
+                variables = self.format_subsection(
+                    'Variables', indent=indent) + variables + '\n\n'
         return variables
 
     def format_description(self, block, indent=0):
@@ -1315,7 +1327,7 @@ class F90toRst(object):
         blocks = block if isinstance(block, list) else block['body']
         fdecs = []
         for subblock in blocks:  # block['body']:
-            if subblock['block'] in ['function', 'subroutine']:
+            if subblock['block'] in ['function', 'subroutine'] and self.is_exposed(subblock):
                 fdecs.append(self.format_routine(subblock, indent))
         if fdecs:
             fdecs = '\n'.join(fdecs)
@@ -1485,7 +1497,7 @@ def fmt_indent(string):
 class FortranAutoModuleDirective(Directive):
     has_content = True
     option_spec = dict(title_underline=unchanged, indent=fmt_indent,
-                       subsection_type=unchanged)
+                       subsection_type=unchanged, exclude_private=unchanged)
     required_arguments = 1
     optional_arguments = 0
 
@@ -1507,14 +1519,19 @@ class FortranAutoModuleDirective(Directive):
         ic = f90torst.ic
         ulc = f90torst.ulc
         sst = f90torst.sst
+        prv = f90torst.exclude_private
         if self.options.get('indent'):
             f90torst.ic = self.options['indent']
         if self.options.get('title_underline'):
             f90torst.ulc = self.options['title_underline']
         if self.options.get('subsection_type'):
             f90torst.sst = self.options['subsection_type']
+        if 'exclude_private' in self.options:
+            f90torst.exclude_private = (self.options['exclude_private'] == '' or
+                                        self.options['exclude_private'] == 'yes')
 
         # Get rst
+        print("formatting")
         raw_text = f90torst.format_module(module)
 
         # Insert it
@@ -1530,6 +1547,8 @@ class FortranAutoModuleDirective(Directive):
             f90torst.ulc = ulc
         if 'subsection_type' in self.options:
             f90torst.sst = sst
+        if 'exclude_private' in self.options:
+            f90torst.exclude_private = prv
 
         return []
 
@@ -1705,6 +1724,7 @@ def setup(app):
     app.add_config_value('fortran_title_underline', '-', False)
     app.add_config_value('fortran_indent', 4, False)
     app.add_config_value('fortran_subsection_type', 'rubric', False)
+    app.add_config_value('fortran_exclude_private', False, False)
     app.add_config_value('fortran_src', ['.'], False)
     app.add_config_value('fortran_ext', ['f90', 'f95'], False)
     app.add_config_value('fortran_encoding', 'utf8', False)

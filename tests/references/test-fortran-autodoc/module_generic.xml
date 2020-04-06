@@ -36,6 +36,14 @@
                         <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="sst" reftype="var" refwarn="False">
                             <literal classes="xref f f-var">
                                 sst
+            <field>
+                <field_name>
+                    Routines
+                <field_body>
+                    <paragraph>
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="generic/evolve" reftype="func" refwarn="False">
+                            <literal classes="xref f f-func">
+                                evolve()
         <rubric>
             Types
         <bullet_list bullet="-">
@@ -183,6 +191,19 @@
                     <desc_content>
                         <paragraph>
                             Sea surface temperature
+        <rubric>
+            Subroutines and functions
+        <index entries="('single',\ 'evolve()\ (fortran\ subroutine\ in\ module\ generic)',\ 'f/generic/evolve',\ 'f/generic/evolve',\ None)">
+        <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
+            <desc_signature first="False" fullname="generic/evolve" ids="f/generic/evolve" module="generic" names="f/generic/evolve" type="">
+                <desc_annotation xml:space="preserve">
+                    subroutine  
+                <desc_addname xml:space="preserve">
+                    generic/
+                <desc_name xml:space="preserve">
+                    evolve
+                <desc_parameterlist xml:space="preserve">
+            <desc_content>
     <section ids="with-autosrcfile" names="with\ autosrcfile">
         <title>
             With autosrcfile
@@ -214,6 +235,10 @@
                             <literal classes="xref f f-var">
                                 nens
                         , 
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="numberoffish" reftype="var" refwarn="False">
+                            <literal classes="xref f f-var">
+                                numberoffish
+                        , 
                         <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="sss" reftype="var" refwarn="False">
                             <literal classes="xref f f-var">
                                 sss
@@ -221,6 +246,18 @@
                         <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="sst" reftype="var" refwarn="False">
                             <literal classes="xref f f-var">
                                 sst
+            <field>
+                <field_name>
+                    Routines
+                <field_body>
+                    <paragraph>
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="generic/evolve" reftype="func" refwarn="False">
+                            <literal classes="xref f f-func">
+                                evolve()
+                        , 
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="generic/feedfish" reftype="func" refwarn="False">
+                            <literal classes="xref f f-func">
+                                feedfish()
         <rubric>
             Types
         <bullet_list bullet="-">
@@ -327,6 +364,26 @@
                         <paragraph>
                             Size of the ensemble
             <list_item>
+                <index entries="('single',\ 'numberoffish\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/numberoffish',\ 'f/generic/numberoffish',\ None)">
+                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature first="False" fullname="generic/numberoffish" ids="f/generic/numberoffish" module="generic" names="f/generic/numberoffish" type="">
+                        <desc_addname xml:space="preserve">
+                            generic/
+                        <desc_name xml:space="preserve">
+                            numberoffish
+                        <emphasis>
+                             [
+                        <pending_xref modname="generic" refdomain="f" reftarget="integer" reftype="type">
+                            <emphasis>
+                                integer
+                        <emphasis>
+                            ,
+                        <emphasis>
+                            private
+                        <emphasis>
+                            ]
+                    <desc_content>
+            <list_item>
                 <index entries="('single',\ 'sss\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sss',\ 'f/generic/sss',\ None)">
                 <desc desctype="variable" domain="f" noindex="False" objtype="variable">
                     <desc_signature first="False" fullname="generic/sss" module="generic" type="">
@@ -368,3 +425,45 @@
                     <desc_content>
                         <paragraph>
                             Sea surface temperature
+        <rubric>
+            Subroutines and functions
+        <index entries="('single',\ 'evolve()\ (fortran\ subroutine\ in\ module\ generic)',\ 'f/generic/evolve',\ 'f/generic/evolve',\ None)">
+        <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
+            <desc_signature first="False" fullname="generic/evolve" module="generic" type="">
+                <desc_annotation xml:space="preserve">
+                    subroutine  
+                <desc_addname xml:space="preserve">
+                    generic/
+                <desc_name xml:space="preserve">
+                    evolve
+                <desc_parameterlist xml:space="preserve">
+            <desc_content>
+                <field_list>
+                    <field>
+                        <field_name>
+                            Call to
+                        <field_body>
+                            <paragraph>
+                                <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="feedfish" reftype="func" refwarn="False">
+                                    <literal classes="xref f f-func">
+                                        feedfish()
+        <index entries="('single',\ 'feedfish()\ (fortran\ subroutine\ in\ module\ generic)',\ 'f/generic/feedfish',\ 'f/generic/feedfish',\ None)">
+        <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
+            <desc_signature first="False" fullname="generic/feedfish" ids="f/generic/feedfish" module="generic" names="f/generic/feedfish" type="">
+                <desc_annotation xml:space="preserve">
+                    subroutine  
+                <desc_addname xml:space="preserve">
+                    generic/
+                <desc_name xml:space="preserve">
+                    feedfish
+                <desc_parameterlist xml:space="preserve">
+            <desc_content>
+                <field_list>
+                    <field>
+                        <field_name>
+                            Called from
+                        <field_body>
+                            <paragraph>
+                                <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="evolve" reftype="func" refwarn="False">
+                                    <literal classes="xref f f-func">
+                                        evolve()
