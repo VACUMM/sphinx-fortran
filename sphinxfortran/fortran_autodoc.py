@@ -225,7 +225,7 @@ class F90toRst(object):
                 # Module variables
                 for varname in sorted(block['sortvars']):
                     bvar = block['vars'][varname]
-                    if varname not in self.routines:
+                    if varname not in self.routines and varname not in self.types:
                         self.variables[varname] = bvar
                         # self.variables.pop(varname)
                         bvar['name'] = varname
@@ -1012,8 +1012,7 @@ class F90toRst(object):
                 newattrs.append('default=' + default_value)
             if 'private' in newattrs and 'public' in newattrs:
                 newattrs.remove('private')
-            block['attrspec'] = newattrs
-            vattr.append('/'.join(block['attrspec']))
+            vattr.append('/'.join(newattrs))
         if not vattr:
             return ''
         vattr = ','.join(vattr)
@@ -1025,6 +1024,13 @@ class F90toRst(object):
         vtype = block['typespec']
         if vtype == 'type':
             vtype = block['typename']
+        elif vtype == 'character' and 'charselector' in block:
+            if 'len' in block['charselector']:
+                vtype += '(len=%s)' % block['charselector']['len']
+            elif '*' in block['charselector'] and block['charselector']['*'] != '(*)':
+                vtype += '(len=%s)' % block['charselector']['*']
+            else:
+                vtype += '(len=*)'
         return vtype
 
     def format_argfield(self, blockvar, role=None, block=None):
@@ -1043,7 +1049,7 @@ class F90toRst(object):
             vdim = vdim.replace(':', '*')
         vattr = self.format_argattr(blockvar)
         vdesc = blockvar['desc'] if 'desc' in blockvar else ''
-        optional = 'attrspec' in blockvar and 'optional' in blockvar['attrspec']
+        optional = 'attrspec' in blockvar and 'optional' in blockvar['attrspec'] and 'depend' not in blockvar
         if not role:
             if block and vname in [block['name'], block.get('result')]:
                 role = 'r'

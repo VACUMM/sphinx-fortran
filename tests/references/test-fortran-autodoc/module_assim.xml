@@ -86,20 +86,23 @@
                                         ]
                                      :: 
                                     sign of the exponent
-                            <list_item>
-                                <paragraph>
-                                    <strong>
-                                        printinformation_opt
-                                    <emphasis>
-                                         [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="logical" reftype="type" typename="">
-                                        <emphasis>
-                                            logical
-                                    <emphasis>
-                                        ,
-                                    <emphasis>
-                                        in,
-                                    <emphasis>
-                                        ]
-                                     :: 
-                                    request more verbose output
+                <field>
+                    <field_name>
+                        Options
+                    <field_body>
+                        <paragraph>
+                            <strong>
+                                printinformation_opt
+                            <emphasis>
+                                 [
+                            <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="logical" reftype="type" typename="">
+                                <emphasis>
+                                    logical
+                            <emphasis>
+                                ,
+                            <emphasis>
+                                in,
+                            <emphasis>
+                                ]
+                             :: 
+                            request more verbose output
