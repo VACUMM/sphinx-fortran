@@ -1249,7 +1249,7 @@ class F90toRst(object):
 
         # Types
         decs = []
-        tlist = sorted(self.get_blocklist('types', module))
+        tlist = self.get_blocklist('types', module)
         if tlist:
             decs.append(':Types: ' +
                         ', '.join([':f:type:`%s`' %
