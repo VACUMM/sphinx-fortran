@@ -3,10 +3,10 @@
         Misc routines
     <index entries="('single',\ 'calc_distance()\ (fortran\ subroutine)',\ 'f/_/calc_distance',\ 'f/_/calc_distance',\ None)">
     <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
-        <desc_signature first="False" fullname="_/calc_distance" ids="f/_/calc_distance" module="True" names="f/_/calc_distance" type="">
+        <desc_signature classes="sig sig-object" first="False" fullname="_/calc_distance" ids="f/_/calc_distance" module="True" names="f/_/calc_distance" type="">
             <desc_annotation xml:space="preserve">
                 subroutine  
-            <desc_name xml:space="preserve">
+            <desc_name classes="sig-name descname" xml:space="preserve">
                 calc_distance
             <desc_parameterlist xml:space="preserve">
                 <desc_parameter xml:space="preserve">
