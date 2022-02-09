@@ -1266,11 +1266,11 @@ class FortranDomain(Domain):
         if not matches:
             return None
         elif len(matches) > 1:
-            env.warn(fromdocname,
-                     'more than one target found for cross-reference '
-                     '%r: %s' % (target,
-                                 ', '.join(match[0] for match in matches)),
-                     node.line)
+            logger.warning(
+                'more than one target found for cross-reference '
+                '%r: %s' % (target,
+                            ', '.join(match[0] for match in matches)),
+                location=(fromdocname, node.line))
         name, obj = matches[0]
 
         if obj[1] == 'module':
