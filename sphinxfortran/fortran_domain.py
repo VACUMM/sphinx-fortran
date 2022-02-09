@@ -51,11 +51,15 @@ from sphinx.roles import XRefRole
 from sphinx.locale import _
 from sphinx.domains import Domain, ObjType, Index
 from sphinx.directives import ObjectDescription
+from sphinx.util import logging
 from sphinx.util.nodes import make_refnode
 from sphinx.util.docfields import Field, GroupedField, TypedField, DocFieldTransformer, _is_single_paragraph
 
 import six
 
+# Set up logging
+
+logger = logging.getLogger(__name__)
 
 # FIXME: surlignage en jaune de la recherche inactive si "/" dans target
 
@@ -697,12 +701,9 @@ class FortranObject(ObjectDescription):
             self.state.document.note_explicit_target(signode)
             objects = self.env.domaindata['f']['objects']
             if fullname in objects:
-                self.env.warn(
-                    self.env.docname,
-                    'duplicate object description of %s, ' % fullname +
-                    'other instance in ' +
-                    self.env.doc2path(objects[fullname][0]),
-                    self.lineno)
+                logger.warning(f'duplicate object description of {fullname}, other instance in '+
+                               self.env.doc2path(objects[fullname][0]),
+                               location=(self.env.docname, self.lineno))
             objects[fullname] = (self.env.docname, self.objtype)
         indextext = self.get_index_text(modname, fullname)
         if indextext:
