@@ -63,7 +63,7 @@ def check_result(test_name, result):
 @pytest.mark.sphinx('dummy', testroot='fortran-autodoc')
 def test_autodoc_module_assim(app, status, warning):
     app.builder.build_all()
-    result = pickle.loads((app.doctreedir / 'module_assim.doctree').bytes())
+    result = pickle.loads((app.doctreedir / 'module_assim.doctree').read_bytes())
     check_result('module_assim', result)
 
 
@@ -80,12 +80,12 @@ def test_autodoc_module_assim(app, status, warning):
 @pytest.mark.sphinx('dummy', testroot='fortran-autodoc')
 def test_autodoc_module_generic(app, status, warning):
     app.builder.build_all()
-    result = pickle.loads((app.doctreedir / 'module_generic.doctree').bytes())
+    result = pickle.loads((app.doctreedir / 'module_generic.doctree').read_bytes())
     check_result('module_generic', result)
 
 
 @pytest.mark.sphinx('dummy', testroot='fortran-autodoc')
 def test_autodoc_misc_routines(app, status, warning):
     app.builder.build_all()
-    result = pickle.loads((app.doctreedir / 'misc_routines.doctree').bytes())
+    result = pickle.loads((app.doctreedir / 'misc_routines.doctree').read_bytes())
     check_result('misc_routines', result)

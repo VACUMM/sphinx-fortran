@@ -54,6 +54,8 @@ from sphinx.directives import ObjectDescription
 from sphinx.util.nodes import make_refnode
 from sphinx.util.docfields import Field, GroupedField, TypedField, DocFieldTransformer, _is_single_paragraph
 
+from typing import (Any, Callable, Dict, Generator, Iterator, List, Tuple, Type, TypeVar, Union, Optional)
+
 import six
 
 
@@ -1256,6 +1258,19 @@ class FortranDomain(Domain):
             matches.append((newname, objects[newname]))
         return matches
 
+    def merge_domaindata(self, docnames: List[str], otherdata: Dict) -> None:
+        ourNames = self.data['modules']
+        for name, docname in otherdata['modules'].items():
+            if docname in docnames:
+                if name not in outNames:
+                    outNames[name] = docname
+
+        ourNames = self.data['objects']
+        for name, docname in otherdata['objects'].items():
+            if docname in docnames:
+                if name not in outNames:
+                    outNames[name] = docname
+
     def resolve_xref(self, env, fromdocname, builder,
                      type, target, node, contnode):
         modname = node.get('f:module', node.get('modname'))
@@ -1299,3 +1314,4 @@ class FortranDomain(Domain):
 
 def setup(app):
     app.add_domain(FortranDomain)
+    return {'parallel_read_safe': True, 'parallel_write_safe': True}

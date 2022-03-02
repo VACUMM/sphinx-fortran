@@ -3,10 +3,10 @@
         Assimilation module
     <index entries="('single',\ 'utl_matsqrt()\ (fortran\ subroutine)',\ 'f/_/utl_matsqrt',\ 'f/_/utl_matsqrt',\ None)">
     <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
-        <desc_signature first="False" fullname="_/utl_matsqrt" ids="f/_/utl_matsqrt" module="True" names="f/_/utl_matsqrt" type="">
+        <desc_signature classes="sig sig-object" first="False" fullname="_/utl_matsqrt" ids="f/_/utl_matsqrt" module="True" names="f/_/utl_matsqrt" type="">
             <desc_annotation xml:space="preserve">
                 subroutine  
-            <desc_name xml:space="preserve">
+            <desc_name classes="sig-name descname" xml:space="preserve">
                 utl_matsqrt
             <desc_parameterlist xml:space="preserve">
                 <desc_parameter xml:space="preserve">
