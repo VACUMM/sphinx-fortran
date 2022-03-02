@@ -345,9 +345,9 @@ class F90toRst(object):
                             continue
                         if 'vardescsearch' in block:
                             m = block['vardescsearch'](line)
-                        if m:
-                            block['vars'][m.group('varname').lower()]['desc'] = m.group(
-                                'vardesc')
+                            if m:
+                                block['vars'][m.group('varname').lower()]['desc'] = m.group(
+                                    'vardesc')
                 for bvar in list(block['vars'].values()):
                     bvar.setdefault('desc', '')
 
