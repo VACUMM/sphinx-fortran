@@ -108,8 +108,13 @@ def add_shape(node, shape, modname=None, nodefmt=nodes.Text):
 
 re_name_shape = re.compile(r'(\w+)(\(.+\))?')
 
+# The regular expression to get the different arg fields from :param:
+# Make double precision an acceptable type
+# re_fieldname_match = re.compile(
+#     r'(?P<type>\b(?:double precision|\w+)\b(?P<kind>\s*\(.*\))?)?\s*(?P<name>\b\w+\b)\s*(?P<shape>\(.*\))?\s*(?P<sattrs>\[.+\])?').match
+# Accept all types in two words
 re_fieldname_match = re.compile(
-    r'(?P<type>\b\w+\b(?P<kind>\s*\(.*\))?)?\s*(?P<name>\b\w+\b)\s*(?P<shape>\(.*\))?\s*(?P<sattrs>\[.+\])?').match
+    r'(?P<type>\b\w+ ?(?:\w+)?\b(?P<kind>\s*\(.*\))?)?\s*(?P<name>\b\w+\b)\s*(?P<shape>\(.*\))?\s*(?P<sattrs>\[.+\])?').match
 
 
 class FortranField(Field):
