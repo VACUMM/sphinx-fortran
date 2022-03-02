@@ -65,6 +65,7 @@ logger = logging.getLogger(__name__)
 class F90toRstException(Exception):
     pass
 
+
 class F90toRst(object):
     '''Fortran 90 parser and restructeredtext formatter
 
@@ -345,9 +346,9 @@ class F90toRst(object):
                             continue
                         if 'vardescsearch' in block:
                             m = block['vardescsearch'](line)
-                        if m:
-                            block['vars'][m.group('varname').lower()]['desc'] = m.group(
-                                'vardesc')
+                            if m:
+                                block['vars'][m.group('varname').lower()]['desc'] = m.group(
+                                    'vardesc')
                 for bvar in list(block['vars'].values()):
                     bvar.setdefault('desc', '')
 
@@ -751,7 +752,6 @@ class F90toRst(object):
                 tmp.append(line)
             else:
                 tmp.extend(line.splitlines())
-
         lines = tmp
         del tmp
 
@@ -1611,6 +1611,7 @@ class FortranAutoSubroutineDirective(FortranAutoObjectDirective):
 class FortranAutoTypeDirective(FortranAutoObjectDirective):
     _warning = 'Wrong type name: %s'
     _objtype = 'type'
+
 
 class FortranAutoVariableDirective(FortranAutoObjectDirective):
     _warning = 'Wrong variable name: %s'
