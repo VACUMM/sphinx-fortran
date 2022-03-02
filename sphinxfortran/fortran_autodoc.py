@@ -344,10 +344,11 @@ class F90toRst(object):
                     for line in modsrc:
                         if line.strip().startswith('!'):
                             continue
-                        m = block['vardescsearch'](line)
-                        if m:
-                            block['vars'][m.group('varname').lower()]['desc'] = m.group(
-                                'vardesc')
+                        if 'vardescsearch' in block:
+                            m = block['vardescsearch'](line)
+                            if m:
+                                block['vars'][m.group('varname').lower()]['desc'] = m.group(
+                                    'vardesc')
                 for bvar in list(block['vars'].values()):
                     bvar.setdefault('desc', '')
 
@@ -464,7 +465,7 @@ class F90toRst(object):
         """Join unended lines that does not finish with a comment"""
         for iline, line in enumerate(src):
             m = self._re_unended_match(line)
-            if m:
+            if m and iline < len(src) - 1:
                 thisline = m.group(1)
                 m = self._re_unstarted_match(src[iline + 1])
                 nextline = m.group(1) if m else src[iline + 1]
@@ -1211,7 +1212,6 @@ class F90toRst(object):
         if blocktype in ['function', 'subroutine']:
             if 'callfrom' in block and block['callfrom']:
                 callfrom = []
-
                 for fromname in block['callfrom']:
                     if fromname in self.routines:
                         cf = self.format_funcref(fromname, module)
