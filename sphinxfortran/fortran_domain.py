@@ -51,6 +51,7 @@ from sphinx.roles import XRefRole
 from sphinx.locale import _
 from sphinx.domains import Domain, ObjType, Index
 from sphinx.directives import ObjectDescription
+from sphinx.util import logging
 from sphinx.util.nodes import make_refnode
 from sphinx.util.docfields import Field, GroupedField, TypedField, DocFieldTransformer, _is_single_paragraph
 
@@ -58,6 +59,9 @@ from typing import (Any, Callable, Dict, Generator, Iterator, List, Tuple, Type,
 
 import six
 
+# Set up logging
+
+logger = logging.getLogger(__name__)
 
 # FIXME: surlignage en jaune de la recherche inactive si "/" dans target
 
@@ -704,12 +708,9 @@ class FortranObject(ObjectDescription):
             self.state.document.note_explicit_target(signode)
             objects = self.env.domaindata['f']['objects']
             if fullname in objects:
-                self.env.warn(
-                    self.env.docname,
-                    'duplicate object description of %s, ' % fullname +
-                    'other instance in ' +
-                    self.env.doc2path(objects[fullname][0]),
-                    self.lineno)
+                logger.warning(f'duplicate object description of {fullname}, other instance in '+
+                               self.env.doc2path(objects[fullname][0]),
+                               location=(self.env.docname, self.lineno))
             objects[fullname] = (self.env.docname, self.objtype)
         indextext = self.get_index_text(modname, fullname)
         if indextext:
@@ -1285,11 +1286,11 @@ class FortranDomain(Domain):
         if not matches:
             return None
         elif len(matches) > 1:
-            env.warn(fromdocname,
-                     'more than one target found for cross-reference '
-                     '%r: %s' % (target,
-                                 ', '.join(match[0] for match in matches)),
-                     node.line)
+            logger.warning(
+                'more than one target found for cross-reference '
+                '%r: %s' % (target,
+                            ', '.join(match[0] for match in matches)),
+                location=(fromdocname, node.line))
         name, obj = matches[0]
 
         if obj[1] == 'module':
