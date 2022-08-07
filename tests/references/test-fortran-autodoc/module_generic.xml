@@ -79,9 +79,9 @@
                                                 )
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                                     <emphasis>
-                                                        real
+                                                        real 
                                                 <emphasis>
                                                     ]
                                                  :: 
@@ -97,9 +97,9 @@
                                                 )
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                                     <emphasis>
-                                                        real
+                                                        real 
                                                 <emphasis>
                                                     ]
                                                  :: 
@@ -112,9 +112,9 @@
                                                     myint
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer " reftype="type" typename="">
                                                     <emphasis>
-                                                        integer
+                                                        integer 
                                                 <emphasis>
                                                     ]
                                                  :: 
@@ -281,9 +281,9 @@
                                                 )
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                                     <emphasis>
-                                                        real
+                                                        real 
                                                 <emphasis>
                                                     ]
                                                  :: 
@@ -299,9 +299,9 @@
                                                 )
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                                     <emphasis>
-                                                        real
+                                                        real 
                                                 <emphasis>
                                                     ]
                                                  :: 
@@ -314,9 +314,9 @@
                                                     myint
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer " reftype="type" typename="">
                                                     <emphasis>
-                                                        integer
+                                                        integer 
                                                 <emphasis>
                                                     ]
                                                  :: 

@@ -43,9 +43,9 @@
                                         np
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer " reftype="type" typename="">
                                         <emphasis>
-                                            integer
+                                            integer 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -60,9 +60,9 @@
                                         nd
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer " reftype="type" typename="">
                                         <emphasis>
-                                            integer
+                                            integer 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -84,9 +84,9 @@
                                     )
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                         <emphasis>
-                                            real
+                                            real 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -101,9 +101,9 @@
                                         i
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer " reftype="type" typename="">
                                         <emphasis>
-                                            integer
+                                            integer 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -118,9 +118,9 @@
                                         j
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer " reftype="type" typename="">
                                         <emphasis>
-                                            integer
+                                            integer 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -139,9 +139,9 @@
                                     )
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                         <emphasis>
-                                            real
+                                            real 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -156,9 +156,9 @@
                                         d
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                         <emphasis>
-                                            real
+                                            real 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -173,9 +173,9 @@
                                         d2
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                         <emphasis>
-                                            real
+                                            real 
                                     <emphasis>
                                         ,
                                     <emphasis>

@@ -41,9 +41,9 @@
                                     )
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                         <emphasis>
-                                            real
+                                            real 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -58,9 +58,9 @@
                                         kn
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="integer " reftype="type" typename="">
                                         <emphasis>
-                                            integer
+                                            integer 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -75,9 +75,9 @@
                                         zsign
                                     <emphasis>
                                          [
-                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                    <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                         <emphasis>
-                                            real
+                                            real 
                                     <emphasis>
                                         ,
                                     <emphasis>
@@ -95,9 +95,9 @@
                                 printinformation_opt
                             <emphasis>
                                  [
-                            <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="logical" reftype="type" typename="">
+                            <pending_xref modname="True" refdomain="f" refexplicit="False" reftarget="logical " reftype="type" typename="">
                                 <emphasis>
-                                    logical
+                                    logical 
                             <emphasis>
                                 ,
                             <emphasis>
