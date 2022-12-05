@@ -6,6 +6,7 @@ With automodule
 ---------------
 
 .. f:automodule:: generic
+   :exclude_private:
 
 
 With autosrcfile

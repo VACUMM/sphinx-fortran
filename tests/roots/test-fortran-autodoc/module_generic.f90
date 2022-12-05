@@ -4,6 +4,7 @@ module generic
 integer, parameter :: nens = 100 ! Size of the ensemble
 real, dimension(nens) :: sst, & ! Sea surface temperature
     & sss ! Sea surface salinity
+integer, private :: numberOfFish
 
 type mytest
     ! Description of my type
@@ -21,5 +22,18 @@ type mysecondtest
     ! Description of my second type
 
 end type mysecondtest
+
+private :: feedFish
+public :: evolve
+
+contains
+
+  subroutine evolve()
+    call feedFish()
+  end subroutine evolve
+
+  subroutine feedFish()
+    numberOfFish = numberOfFish + 1
+  end subroutine feedFish
 
 end module generic
