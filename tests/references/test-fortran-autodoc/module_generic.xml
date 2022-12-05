@@ -17,6 +17,10 @@
                     Types
                 <field_body>
                     <paragraph>
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="mysecondtest" reftype="type" refwarn="False">
+                            <literal classes="xref f f-type">
+                                mysecondtest
+                        , 
                         <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="mytest" reftype="type" refwarn="False">
                             <literal classes="xref f f-type">
                                 mytest
@@ -50,12 +54,12 @@
             <list_item>
                 <index entries="('single',\ 'mytest\ (fortran\ type\ in\ module\ generic)',\ 'f/generic/mytest',\ 'f/generic/mytest',\ None)">
                 <desc desctype="type" domain="f" noindex="False" objtype="type">
-                    <desc_signature first="False" fullname="generic/mytest" ids="f/generic/mytest" module="generic" names="f/generic/mytest" type="">
+                    <desc_signature classes="sig sig-object" first="False" fullname="generic/mytest" ids="f/generic/mytest" module="generic" names="f/generic/mytest" type="">
                         <desc_annotation xml:space="preserve">
                             type  
-                        <desc_addname xml:space="preserve">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
-                        <desc_name xml:space="preserve">
+                        <desc_name classes="sig-name descname" xml:space="preserve">
                             mytest
                     <desc_content>
                         <paragraph>
@@ -74,65 +78,78 @@
                                     <bullet_list>
                                         <list_item>
                                             <paragraph>
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     % 
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     arr
                                                  (
                                                 10
                                                 )
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                                     <emphasis>
-                                                        real
+                                                        real 
                                                 <emphasis>
                                                     ]
                                                  :: 
                                                 Array of fixed size
                                         <list_item>
                                             <paragraph>
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     % 
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     arr2
                                                  (
                                                 20
                                                 )
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                                     <emphasis>
-                                                        real
+                                                        real 
                                                 <emphasis>
                                                     ]
                                                  :: 
                                                 Array described in docstring
                                         <list_item>
                                             <paragraph>
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     % 
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     myint
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer " reftype="type" typename="">
                                                     <emphasis>
-                                                        integer
+                                                        integer 
                                                 <emphasis>
                                                     ]
                                                  :: 
                                                 Description of myint
+            <list_item>
+                <index entries="('single',\ 'mysecondtest\ (fortran\ type\ in\ module\ generic)',\ 'f/generic/mysecondtest',\ 'f/generic/mysecondtest',\ None)">
+                <desc desctype="type" domain="f" noindex="False" objtype="type">
+                    <desc_signature classes="sig sig-object" first="False" fullname="generic/mysecondtest" ids="f/generic/mysecondtest" module="generic" names="f/generic/mysecondtest" type="">
+                        <desc_annotation xml:space="preserve">
+                            type  
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
+                            generic/
+                        <desc_name classes="sig-name descname" xml:space="preserve">
+                            mysecondtest
+                    <desc_content>
+                        <paragraph>
+                            Description of my second type
         <rubric>
             Variables
         <bullet_list bullet="-">
             <list_item>
                 <index entries="('single',\ 'nens\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/nens',\ 'f/generic/nens',\ None)">
-                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature first="False" fullname="generic/nens" ids="f/generic/nens" module="generic" names="f/generic/nens" type="">
-                        <desc_addname xml:space="preserve">
+                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature classes="sig sig-object" first="False" fullname="generic/nens" ids="f/generic/nens" module="generic" names="f/generic/nens" type="">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
-                        <desc_name xml:space="preserve">
+                        <desc_name classes="sig-name descname" xml:space="preserve">
                             nens
                         <emphasis>
                              [
@@ -151,11 +168,11 @@
                             Size of the ensemble
             <list_item>
                 <index entries="('single',\ 'sss\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sss',\ 'f/generic/sss',\ None)">
-                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature first="False" fullname="generic/sss" ids="f/generic/sss" module="generic" names="f/generic/sss" type="">
-                        <desc_addname xml:space="preserve">
+                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature classes="sig sig-object" first="False" fullname="generic/sss" ids="f/generic/sss" module="generic" names="f/generic/sss" type="">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
-                        <desc_name xml:space="preserve">
+                        <desc_name classes="sig-name descname" xml:space="preserve">
                             sss
                          (
                         100
@@ -172,11 +189,11 @@
                             Sea surface salinity
             <list_item>
                 <index entries="('single',\ 'sst\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sst',\ 'f/generic/sst',\ None)">
-                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature first="False" fullname="generic/sst" ids="f/generic/sst" module="generic" names="f/generic/sst" type="">
-                        <desc_addname xml:space="preserve">
+                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature classes="sig sig-object" first="False" fullname="generic/sst" ids="f/generic/sst" module="generic" names="f/generic/sst" type="">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
-                        <desc_name xml:space="preserve">
+                        <desc_name classes="sig-name descname" xml:space="preserve">
                             sst
                          (
                         100
@@ -223,6 +240,10 @@
                     Types
                 <field_body>
                     <paragraph>
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="mysecondtest" reftype="type" refwarn="False">
+                            <literal classes="xref f f-type">
+                                mysecondtest
+                        , 
                         <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="mytest" reftype="type" refwarn="False">
                             <literal classes="xref f f-type">
                                 mytest
@@ -264,12 +285,12 @@
             <list_item>
                 <index entries="('single',\ 'mytest\ (fortran\ type\ in\ module\ generic)',\ 'f/generic/mytest',\ 'f/generic/mytest',\ None)">
                 <desc desctype="type" domain="f" noindex="False" objtype="type">
-                    <desc_signature first="False" fullname="generic/mytest" module="generic" type="">
+                    <desc_signature classes="sig sig-object" first="False" fullname="generic/mytest" module="generic" type="">
                         <desc_annotation xml:space="preserve">
                             type  
-                        <desc_addname xml:space="preserve">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
-                        <desc_name xml:space="preserve">
+                        <desc_name classes="sig-name descname" xml:space="preserve">
                             mytest
                     <desc_content>
                         <paragraph>
@@ -288,65 +309,78 @@
                                     <bullet_list>
                                         <list_item>
                                             <paragraph>
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     % 
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     arr
                                                  (
                                                 10
                                                 )
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                                     <emphasis>
-                                                        real
+                                                        real 
                                                 <emphasis>
                                                     ]
                                                  :: 
                                                 Array of fixed size
                                         <list_item>
                                             <paragraph>
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     % 
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     arr2
                                                  (
                                                 20
                                                 )
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="real " reftype="type" typename="">
                                                     <emphasis>
-                                                        real
+                                                        real 
                                                 <emphasis>
                                                     ]
                                                  :: 
                                                 Array described in docstring
                                         <list_item>
                                             <paragraph>
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     % 
-                                                <desc_name xml:space="preserve">
+                                                <desc_name classes="sig-name descname" xml:space="preserve">
                                                     myint
                                                 <emphasis>
                                                      [
-                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer" reftype="type" typename="">
+                                                <pending_xref modname="generic" refdomain="f" refexplicit="False" reftarget="integer " reftype="type" typename="">
                                                     <emphasis>
-                                                        integer
+                                                        integer 
                                                 <emphasis>
                                                     ]
                                                  :: 
                                                 Description of myint
+            <list_item>
+                <index entries="('single',\ 'mysecondtest\ (fortran\ type\ in\ module\ generic)',\ 'f/generic/mysecondtest',\ 'f/generic/mysecondtest',\ None)">
+                <desc desctype="type" domain="f" noindex="False" objtype="type">
+                    <desc_signature classes="sig sig-object" first="False" fullname="generic/mysecondtest" module="generic" type="">
+                        <desc_annotation xml:space="preserve">
+                            type  
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
+                            generic/
+                        <desc_name classes="sig-name descname" xml:space="preserve">
+                            mysecondtest
+                    <desc_content>
+                        <paragraph>
+                            Description of my second type
         <rubric>
             Variables
         <bullet_list bullet="-">
             <list_item>
                 <index entries="('single',\ 'nens\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/nens',\ 'f/generic/nens',\ None)">
-                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature first="False" fullname="generic/nens" module="generic" type="">
-                        <desc_addname xml:space="preserve">
+                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature classes="sig sig-object" fullname="generic/nens" module="generic" type="">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
-                        <desc_name xml:space="preserve">
+                        <desc_name classes="sig-name descname" xml:space="preserve">
                             nens
                         <emphasis>
                              [
@@ -385,11 +419,11 @@
                     <desc_content>
             <list_item>
                 <index entries="('single',\ 'sss\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sss',\ 'f/generic/sss',\ None)">
-                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature first="False" fullname="generic/sss" module="generic" type="">
-                        <desc_addname xml:space="preserve">
+                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature classes="sig sig-object" fullname="generic/sss" module="generic" type="">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
-                        <desc_name xml:space="preserve">
+                        <desc_name classes="sig-name descname" xml:space="preserve">
                             sss
                          (
                         100
@@ -406,11 +440,11 @@
                             Sea surface salinity
             <list_item>
                 <index entries="('single',\ 'sst\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sst',\ 'f/generic/sst',\ None)">
-                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature first="False" fullname="generic/sst" module="generic" type="">
-                        <desc_addname xml:space="preserve">
+                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
+                    <desc_signature classes="sig sig-object" fullname="generic/sst" module="generic" type="">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
-                        <desc_name xml:space="preserve">
+                        <desc_name classes="sig-name descname" xml:space="preserve">
                             sst
                          (
                         100

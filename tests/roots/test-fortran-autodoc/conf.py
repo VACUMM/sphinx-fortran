@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
 import sys
 import os
 this_dir = os.path.dirname(__file__)
@@ -19,5 +20,5 @@ fortran_src = [os.path.abspath(os.path.join(this_dir, path))
                             'module_generic.f90',
                             'misc_routines.f90',
                             )]
-print fortran_src
+print(fortran_src)
 

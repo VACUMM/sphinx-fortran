@@ -18,6 +18,11 @@ type mytest
 
 end type mytest
 
+type mysecondtest
+    ! Description of my second type
+
+end type mysecondtest
+
 private :: feedFish
 public :: evolve
 

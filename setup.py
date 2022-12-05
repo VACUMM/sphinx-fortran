@@ -25,6 +25,7 @@ maintainer_email = author_email
 license = "CeCiLL-A"
 url = "http://sphinx-fortran.readthedocs.org"
 classifiers = [
+        "Framework :: Sphinx :: Extension",
         ("License :: OSI Approved :: CEA CNRS Inria Logiciel "
          "Libre License, version 2.1 (CeCILL-2.1)"),
         "Topic :: Scientific/Engineering",
