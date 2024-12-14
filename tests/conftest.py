@@ -11,7 +11,7 @@ import sys
 
 import pytest
 
-from sphinx.testing.path import path
+from pathlib import Path
 
 pytest_plugins = 'sphinx.testing.fixtures'
 
@@ -28,7 +28,7 @@ collect_ignore = ['roots']
 
 @pytest.fixture(scope='session')
 def rootdir():
-    return path(os.path.dirname(__file__) or '.').abspath() / 'roots'
+    return Path(os.path.dirname(__file__) or '.').absolute() / 'roots'
 
 
 def pytest_report_header(config):
