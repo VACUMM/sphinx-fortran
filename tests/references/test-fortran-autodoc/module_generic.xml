@@ -1,11 +1,12 @@
 <section ids="generic-module" names="generic\ module">
     <title>
         Generic module
-    <section ids="f/generic with-automodule" names="with\ automodule">
+    <section ids="with-automodule" names="with\ automodule">
         <title>
             With automodule
         <index entries="('single',\ 'generic\ (module)',\ 'f/generic',\ 'generic',\ None)">
-        <rubric>
+        <target ismod="True" refid="f/generic">
+        <rubric ids="f/generic">
             Description
         <paragraph>
             A module of generic utilities
@@ -145,8 +146,8 @@
         <bullet_list bullet="-">
             <list_item>
                 <index entries="('single',\ 'nens\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/nens',\ 'f/generic/nens',\ None)">
-                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature classes="sig sig-object" first="False" fullname="generic/nens" ids="f/generic/nens" module="generic" names="f/generic/nens" type="">
+                <desc classes="f variable" desctype="variable" domain="f" no-contents-entry="False" no-index="False" no-index-entry="False" no-typesetting="False" nocontentsentry="False" noindex="False" noindexentry="False" objtype="variable">
+                    <desc_signature _toc_name="" _toc_parts="()" classes="sig sig-object" first="False" fullname="generic/nens" ids="f/generic/nens" module="generic" names="f/generic/nens" type="">
                         <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
                         <desc_name classes="sig-name descname" xml:space="preserve">
@@ -168,8 +169,8 @@
                             Size of the ensemble
             <list_item>
                 <index entries="('single',\ 'sss\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sss',\ 'f/generic/sss',\ None)">
-                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature classes="sig sig-object" first="False" fullname="generic/sss" ids="f/generic/sss" module="generic" names="f/generic/sss" type="">
+                <desc classes="f variable" desctype="variable" domain="f" no-contents-entry="False" no-index="False" no-index-entry="False" no-typesetting="False" nocontentsentry="False" noindex="False" noindexentry="False" objtype="variable">
+                    <desc_signature _toc_name="" _toc_parts="()" classes="sig sig-object" first="False" fullname="generic/sss" ids="f/generic/sss" module="generic" names="f/generic/sss" type="">
                         <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
                         <desc_name classes="sig-name descname" xml:space="preserve">
@@ -189,8 +190,8 @@
                             Sea surface salinity
             <list_item>
                 <index entries="('single',\ 'sst\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sst',\ 'f/generic/sst',\ None)">
-                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature classes="sig sig-object" first="False" fullname="generic/sst" ids="f/generic/sst" module="generic" names="f/generic/sst" type="">
+                <desc classes="f variable" desctype="variable" domain="f" no-contents-entry="False" no-index="False" no-index-entry="False" no-typesetting="False" nocontentsentry="False" noindex="False" noindexentry="False" objtype="variable">
+                    <desc_signature _toc_name="" _toc_parts="()" classes="sig sig-object" first="False" fullname="generic/sst" ids="f/generic/sst" module="generic" names="f/generic/sst" type="">
                         <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
                         <desc_name classes="sig-name descname" xml:space="preserve">
@@ -212,21 +213,20 @@
             Subroutines and functions
         <index entries="('single',\ 'evolve()\ (fortran\ subroutine\ in\ module\ generic)',\ 'f/generic/evolve',\ 'f/generic/evolve',\ None)">
         <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
-            <desc_signature first="False" fullname="generic/evolve" ids="f/generic/evolve" module="generic" names="f/generic/evolve" type="">
+            <desc_signature classes="sig sig-object" first="False" fullname="generic/evolve" ids="f/generic/evolve" module="generic" names="f/generic/evolve" type="">
                 <desc_annotation xml:space="preserve">
                     subroutine  
-                <desc_addname xml:space="preserve">
+                <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                     generic/
-                <desc_name xml:space="preserve">
+                <desc_name classes="sig-name descname" xml:space="preserve">
                     evolve
                 <desc_parameterlist xml:space="preserve">
             <desc_content>
-    <section ids="with-autosrcfile" names="with\ autosrcfile">
+    <section ids="f/generic with-autosrcfile" names="with\ autosrcfile">
         <title>
             With autosrcfile
         <rubric>
             Module
-        <target ids="f/generic" ismod="True">
         <index entries="('single',\ 'generic\ (module)',\ 'f/generic',\ 'generic',\ None)">
         <rubric>
             Description
@@ -252,6 +252,10 @@
                     Variables
                 <field_body>
                     <paragraph>
+                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="feedfish" reftype="var" refwarn="False">
+                            <literal classes="xref f f-var">
+                                feedfish
+                        , 
                         <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="nens" reftype="var" refwarn="False">
                             <literal classes="xref f f-var">
                                 nens
@@ -275,10 +279,6 @@
                         <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="generic/evolve" reftype="func" refwarn="False">
                             <literal classes="xref f f-func">
                                 evolve()
-                        , 
-                        <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="generic/feedfish" reftype="func" refwarn="False">
-                            <literal classes="xref f f-func">
-                                feedfish()
         <rubric>
             Types
         <bullet_list bullet="-">
@@ -375,9 +375,29 @@
             Variables
         <bullet_list bullet="-">
             <list_item>
+                <index entries="('single',\ 'feedfish\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/feedfish',\ 'f/generic/feedfish',\ None)">
+                <desc classes="f variable" desctype="variable" domain="f" no-contents-entry="False" no-index="False" no-index-entry="False" no-typesetting="False" nocontentsentry="False" noindex="False" noindexentry="False" objtype="variable">
+                    <desc_signature _toc_name="" _toc_parts="()" classes="sig sig-object" first="False" fullname="generic/feedfish" ids="f/generic/feedfish" module="generic" names="f/generic/feedfish" type="">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
+                            generic/
+                        <desc_name classes="sig-name descname" xml:space="preserve">
+                            feedfish
+                        <emphasis>
+                             [
+                        <pending_xref modname="generic" refdomain="f" reftarget="real" reftype="type">
+                            <emphasis>
+                                real
+                        <emphasis>
+                            ,
+                        <emphasis>
+                            private
+                        <emphasis>
+                            ]
+                    <desc_content>
+            <list_item>
                 <index entries="('single',\ 'nens\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/nens',\ 'f/generic/nens',\ None)">
-                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature classes="sig sig-object" fullname="generic/nens" module="generic" type="">
+                <desc classes="f variable" desctype="variable" domain="f" no-contents-entry="False" no-index="False" no-index-entry="False" no-typesetting="False" nocontentsentry="False" noindex="False" noindexentry="False" objtype="variable">
+                    <desc_signature _toc_name="" _toc_parts="()" classes="sig sig-object" fullname="generic/nens" module="generic" type="">
                         <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
                         <desc_name classes="sig-name descname" xml:space="preserve">
@@ -399,11 +419,11 @@
                             Size of the ensemble
             <list_item>
                 <index entries="('single',\ 'numberoffish\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/numberoffish',\ 'f/generic/numberoffish',\ None)">
-                <desc desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature first="False" fullname="generic/numberoffish" ids="f/generic/numberoffish" module="generic" names="f/generic/numberoffish" type="">
-                        <desc_addname xml:space="preserve">
+                <desc classes="f variable" desctype="variable" domain="f" no-contents-entry="False" no-index="False" no-index-entry="False" no-typesetting="False" nocontentsentry="False" noindex="False" noindexentry="False" objtype="variable">
+                    <desc_signature _toc_name="" _toc_parts="()" classes="sig sig-object" first="False" fullname="generic/numberoffish" ids="f/generic/numberoffish" module="generic" names="f/generic/numberoffish" type="">
+                        <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
-                        <desc_name xml:space="preserve">
+                        <desc_name classes="sig-name descname" xml:space="preserve">
                             numberoffish
                         <emphasis>
                              [
@@ -419,8 +439,8 @@
                     <desc_content>
             <list_item>
                 <index entries="('single',\ 'sss\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sss',\ 'f/generic/sss',\ None)">
-                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature classes="sig sig-object" fullname="generic/sss" module="generic" type="">
+                <desc classes="f variable" desctype="variable" domain="f" no-contents-entry="False" no-index="False" no-index-entry="False" no-typesetting="False" nocontentsentry="False" noindex="False" noindexentry="False" objtype="variable">
+                    <desc_signature _toc_name="" _toc_parts="()" classes="sig sig-object" fullname="generic/sss" module="generic" type="">
                         <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
                         <desc_name classes="sig-name descname" xml:space="preserve">
@@ -440,8 +460,8 @@
                             Sea surface salinity
             <list_item>
                 <index entries="('single',\ 'sst\ (fortran\ variable\ in\ module\ generic)',\ 'f/generic/sst',\ 'f/generic/sst',\ None)">
-                <desc classes="f variable" desctype="variable" domain="f" noindex="False" objtype="variable">
-                    <desc_signature classes="sig sig-object" fullname="generic/sst" module="generic" type="">
+                <desc classes="f variable" desctype="variable" domain="f" no-contents-entry="False" no-index="False" no-index-entry="False" no-typesetting="False" nocontentsentry="False" noindex="False" noindexentry="False" objtype="variable">
+                    <desc_signature _toc_name="" _toc_parts="()" classes="sig sig-object" fullname="generic/sst" module="generic" type="">
                         <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                             generic/
                         <desc_name classes="sig-name descname" xml:space="preserve">
@@ -463,41 +483,12 @@
             Subroutines and functions
         <index entries="('single',\ 'evolve()\ (fortran\ subroutine\ in\ module\ generic)',\ 'f/generic/evolve',\ 'f/generic/evolve',\ None)">
         <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
-            <desc_signature first="False" fullname="generic/evolve" module="generic" type="">
+            <desc_signature classes="sig sig-object" first="False" fullname="generic/evolve" module="generic" type="">
                 <desc_annotation xml:space="preserve">
                     subroutine  
-                <desc_addname xml:space="preserve">
+                <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                     generic/
-                <desc_name xml:space="preserve">
+                <desc_name classes="sig-name descname" xml:space="preserve">
                     evolve
                 <desc_parameterlist xml:space="preserve">
             <desc_content>
-                <field_list>
-                    <field>
-                        <field_name>
-                            Call to
-                        <field_body>
-                            <paragraph>
-                                <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="feedfish" reftype="func" refwarn="False">
-                                    <literal classes="xref f f-func">
-                                        feedfish()
-        <index entries="('single',\ 'feedfish()\ (fortran\ subroutine\ in\ module\ generic)',\ 'f/generic/feedfish',\ 'f/generic/feedfish',\ None)">
-        <desc desctype="subroutine" domain="f" noindex="False" objtype="subroutine">
-            <desc_signature first="False" fullname="generic/feedfish" ids="f/generic/feedfish" module="generic" names="f/generic/feedfish" type="">
-                <desc_annotation xml:space="preserve">
-                    subroutine  
-                <desc_addname xml:space="preserve">
-                    generic/
-                <desc_name xml:space="preserve">
-                    feedfish
-                <desc_parameterlist xml:space="preserve">
-            <desc_content>
-                <field_list>
-                    <field>
-                        <field_name>
-                            Called from
-                        <field_body>
-                            <paragraph>
-                                <pending_xref f:module="generic" f:type="True" refdoc="module_generic" refdomain="f" refexplicit="False" reftarget="evolve" reftype="func" refwarn="False">
-                                    <literal classes="xref f f-func">
-                                        evolve()
