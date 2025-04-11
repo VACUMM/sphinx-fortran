@@ -7,16 +7,12 @@ Test the fortran_autodoc extension.
 
 Adapted from sphinx/tests/test_autodoc.py.
 """
-from __future__ import print_function
-
 import pickle
 import os
 import warnings
 import difflib
 
 import pytest
-
-#from sphinx import addnodes
 
 this_dir = os.path.dirname(__file__)
 

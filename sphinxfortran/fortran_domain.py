@@ -79,13 +79,13 @@ def convert_arithm(node, expr, modname=None, nodefmt=nodes.Text):
                 refnode = addnodes.pending_xref(
                     '', refdomain='f', reftype='var', reftarget=num,
                     modname=modname)
-                refnode += nodefmt(num, num)
+                refnode += nodefmt(num)
                 node += refnode
             else:
-                node += nodefmt(num, num)
+                node += nodefmt(num)
         if op:
             op = op.replace(':', '*')
-            node += nodefmt(op, op)
+            node += nodefmt(op)
 
 
 def parse_shape(shape):
@@ -101,9 +101,9 @@ def parse_shape(shape):
 def add_shape(node, shape, modname=None, nodefmt=nodes.Text):
     """Format a shape expression for a node"""
     dims = re.split(r'\s*,\s*', shape.strip('( )'))
-    node += nodefmt(' (', ' (')
+    node += nodefmt(' (')
     convert_arithm(node, shape.strip('( )'), modname=modname, nodefmt=nodefmt)
-    node += nodefmt(')', ')')
+    node += nodefmt(')')
 
 #class fortranfield(nodes.Admonition, nodes.TextElement): pass
 
