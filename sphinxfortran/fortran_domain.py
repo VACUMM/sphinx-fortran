@@ -1266,16 +1266,16 @@ class FortranDomain(Domain):
 
     def merge_domaindata(self, docnames: List[str], otherdata: Dict) -> None:
         ourNames = self.data['modules']
-        for name, docname in otherdata['modules'].items():
-            if docname in docnames:
-                if name not in outNames:
-                    outNames[name] = docname
+        for name, data in otherdata['modules'].items():
+            if data[0] in docnames:
+                if name not in ourNames:
+                    ourNames[name] = data
 
         ourNames = self.data['objects']
-        for name, docname in otherdata['objects'].items():
-            if docname in docnames:
-                if name not in outNames:
-                    outNames[name] = docname
+        for name, data in otherdata['objects'].items():
+            if data[0] in docnames:
+                if name not in ourNames:
+                    ourNames[name] = data
 
     def resolve_xref(self, env, fromdocname, builder,
                      type, target, node, contnode):
